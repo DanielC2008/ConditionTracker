@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.css">
 </head>
 <body ng-app="tracker">
- <nav class="z-depth-0">
+ <nav class="z-depth-0" ng-controller="NavCtrl">
     <div class="nav-wrapper #90a4ae blue-grey lighten-2 ">
 			<!-- <img class="responsive-img" src="img/Pathfinder-logo.png"> -->
       <a href="#" class="brand-logo">Condition Tracker</a>
@@ -33,6 +33,7 @@
 	<script src="/app/values/FirebaseCreds.js"></script>
 	<!-- controllers -->
 	<script src="app/controllers/LoginCtrl.js"></script>
+	<script src="app/controllers/NavCtrl.js"></script>
 	<script src="/app/controllers/HeroCtrl.js"></script>
 	<!-- factories -->
 	<script src="/app/factories/AuthFactory.js"></script>

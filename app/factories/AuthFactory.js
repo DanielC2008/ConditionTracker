@@ -9,6 +9,7 @@ app.factory("AuthFactory", function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if(user) {
 			currentUserId = user.uid;
+			console.log("LoggedIn", currentUserId);
 		} 
 	});
 
@@ -27,8 +28,9 @@ app.factory("AuthFactory", function() {
 	const logout = function(){
 		firebase.auth().signOut().then(function(){
 			currentUserId = null;
+			console.log("logged out");
 		}, function(error){
-		})
+		});
 	};
 	
 	return {authWithProvider, isAuthenticated, getUser, logout};
