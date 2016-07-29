@@ -16,6 +16,10 @@ when("/login", {
 	templateUrl: "partials/login.html",
 	controller: "LoginCtrl"
 }).
+when("/tracker/newHero", {
+	templateUrl: "partials/new-hero.html",
+	controller: "NewHeroCtrl"
+}).
 when("/tracker/hero", {
 	templateUrl: "partials/hero.html",
 	controller: "HeroCtrl"
