@@ -63,196 +63,197 @@
 <div>Skills
 	<div class="container">
 		<div class="row">
-			<div class="newInput col s2"><input id="acrobatics" type="checkbox" ng-model="checked1"
-			ng-model="newHero.acrobatics"/><label for="acrobatics">Acrobatics</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.acrobaticsRanks" ng-disabled="!checked1"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.acrobaticsMM" ng-disabled="!checked1"></div>
+			<div class="newInput col s2"><input id="acrobatics" type="checkbox" ng-model="newHero.acrobatics"
+			/><label for="acrobatics">Acrobatics</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.acrobaticsRanks" ng-disabled="!newHero.acrobatics"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.acrobaticsMM" ng-disabled="!newHero.acrobatics"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="appraise" type="checkbox" ng-model="checked2" ng-model="newHero.appraise"/><label for="appraise">Appraise</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.appraiseRanks" ng-disabled="!checked2"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.appraiseMM" ng-disabled="!checked2"></div>
+			<div class="newInput col s2"><input id="appraise" type="checkbox" ng-model="newHero.appraise"/><label for="appraise">Appraise</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.appraiseRanks" ng-disabled="!newHero.appraise"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.appraiseMM" ng-disabled="!newHero.appraise"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="bluff" type="checkbox" ng-model="checked3" ng-model="newHero.bluff"/><label for="bluff">Bluff</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.bluffRanks" ng-disabled="!checked3"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.bluffMM" ng-disabled="!checked3"></div>
+			<div class="newInput col s2"><input id="bluff" type="checkbox" ng-model="newHero.bluff"/><label for="bluff">Bluff</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.bluffRanks" ng-disabled="!newHero.bluff"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.bluffMM" ng-disabled="!newHero.bluff"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="climb" type="checkbox" ng-model="checked4" ng-model="newHero.climb"/><label for="climb">Climb</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.climbRanks" ng-disabled="!checked4"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.climbMM" ng-disabled="!checked4"></div>
+			<div class="newInput col s2"><input id="climb" type="checkbox" ng-model="newHero.climb"/><label for="climb">Climb</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.climbRanks" ng-disabled="!newHero.climb"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.climbMM" ng-disabled="!newHero.climb"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="craft1" type="checkbox" ng-model="checked5" ng-model="newHero.craft1"/><label for="craft1">Craft</label><input placeholder="type..." ng-disabled="!checked5" ng-model="newHero.craft1Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.craft1TypeRanks" ng-disabled="!checked5"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft1TypeMM" ng-disabled="!checked5"></div>
+			<div class="newInput col s2"><input id="craft1" type="checkbox" ng-model="newHero.craft1"/><label for="craft1">Craft</label><input placeholder="type..." ng-disabled="!newHero.craft1" ng-model="newHero.craft1Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.craft1TypeRanks" ng-disabled="!newHero.craft1"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft1TypeMM" ng-disabled="!newHero.craft1"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="craft2" type="checkbox" ng-model="checked6" ng-model="newHero.craft2"/><label for="craft2">Craft</label><input placeholder="type..." ng-disabled="!checked6" ng-model="newHero.craft2Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.craft2TypeRanks" ng-disabled="!checked6"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft2TypeMM" ng-disabled="!checked6"></div>
+			<div class="newInput col s2"><input id="craft2" type="checkbox" ng-model="newHero.craft2"/><label for="craft2">Craft</label><input placeholder="type..." ng-disabled="!newHero.craft2" ng-model="newHero.craft2Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.craft2TypeRanks" ng-disabled="!newHero.craft2"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft2TypeMM" ng-disabled="!newHero.craft2"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="craft3" type="checkbox" ng-model="checked7" ng-model="newHero.craft3"/><label for="craft3">Craft</label><input placeholder="type..." ng-disabled="!checked7" ng-model="newHero.craft3Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.craft3TypeRanks" ng-disabled="!checked7"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft3TypeMM" ng-disabled="!checked7"></div>
+			<div class="newInput col s2"><input id="craft3" type="checkbox" ng-model="newHero.craft3"/><label for="craft3">Craft</label><input placeholder="type..." ng-disabled="!newHero.craft3" ng-model="newHero.craft3Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.craft3TypeRanks" ng-disabled="!newHero.craft3"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.craft3TypeMM" ng-disabled="!newHero.craft3"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="diplomacy" type="checkbox" ng-model="checked8" ng-model="newHero.diplomacy"/><label for="diplomacy">Diplomacy</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.diplomacyRanks" ng-disabled="!checked8"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.diplomacyMM" ng-disabled="!checked8"></div>
+			<div class="newInput col s2"><input id="diplomacy" type="checkbox" ng-model="newHero.diplomacy"/><label for="diplomacy">Diplomacy</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.diplomacyRanks" ng-disabled="!newHero.diplomacy"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.diplomacyMM" ng-disabled="!newHero.diplomacy"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="disableDevice" type="checkbox" ng-model="checked9" ng-model="newHero.disableDevice"/><label for="disableDevice">Disable Device</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.disableDeviceRanks" ng-disabled="!checked9"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.disableDeviceMM" ng-disabled="!checked9"></div>
+			<div class="newInput col s2"><input id="disableDevice" type="checkbox" ng-model="newHero.disableDevice"/><label for="disableDevice">Disable Device</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.disableDeviceRanks" ng-disabled="!newHero.disableDevice"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.disableDeviceMM" ng-disabled="!newHero.disableDevice"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="disguise" type="checkbox" ng-model="checked10" ng-model="newHero.disguise"/><label for="disguise">Disguise</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.disguiseRanks" ng-disabled="!checked10"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.disguiseMM" ng-disabled="!checked10"></div>
+			<div class="newInput col s2"><input id="disguise" type="checkbox" ng-model="newHero.disguise"/><label for="disguise">Disguise</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.disguiseRanks" ng-disabled="!newHero.disguise"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.disguiseMM" ng-disabled="!newHero.disguise"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="escapeArtist" type="checkbox" ng-model="checked11" ng-model="newHero.escapeArtist"/><label for="escapeArtist">Escape Artist</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.escapeArtistRanks" ng-disabled="!checked11"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.escapeArtistMM" ng-disabled="!checked11"></div>
+			<div class="newInput col s2"><input id="escapeArtist" type="checkbox" ng-model="newHero.escapeArtist"/><label for="escapeArtist">Escape Artist</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.escapeArtistRanks" ng-disabled="!newHero.escapeArtist"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.escapeArtistMM" ng-disabled="!newHero.escapeArtist"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="fly" type="checkbox" ng-model="checked12" ng-model="newHero.fly"/><label for="fly">Fly</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.flyRanks" ng-disabled="!checked12"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.flyMM" ng-disabled="!checked12"></div>
+			<div class="newInput col s2"><input id="fly" type="checkbox" ng-model="newHero.fly"/><label for="fly">Fly</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.flyRanks" ng-disabled="!newHero.fly"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.flyMM" ng-disabled="!newHero.fly"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="handleAnimal" type="checkbox" ng-model="checked13" ng-model="newHero.handleAnimal"/><label for="handleAnimal">Handle Animal</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.handleAnimalRanks" ng-disabled="!checked13"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.handleAnimalMM" ng-disabled="!checked13"></div>
+			<div class="newInput col s2"><input id="handleAnimal" type="checkbox" ng-model="newHero.handleAnimal"/><label for="handleAnimal">Handle Animal</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.handleAnimalRanks" ng-disabled="!newHero.handleAnimal"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.handleAnimalMM" ng-disabled="!newHero.handleAnimal"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="heal" type="checkbox" ng-model="checked14" ng-model="newHero.heal"/><label for="heal">Heal</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.healRanks" ng-disabled="!checked14"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.healMM" ng-disabled="!checked14"></div>
+			<div class="newInput col s2"><input id="heal" type="checkbox" ng-model="newHero.heal"/><label for="heal">Heal</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.healRanks" ng-disabled="!newHero.healRanks"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.healMM" ng-disabled="!newHero.healRanks"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="intimidate" type="checkbox" ng-model="checked15" ng-model="newHero.intimidate"/><label for="intimidate">Intimidate</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.intimidateRanks" ng-disabled="!checked15"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.intimidateMM" ng-disabled="!checked15"></div>
+			<div class="newInput col s2"><input id="intimidate" type="checkbox" ng-model="newHero.intimidate"/><label for="intimidate">Intimidate</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.intimidateRanks" ng-disabled="!newHero.intimidate"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.intimidateMM" ng-disabled="!newHero.intimidate"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowArcana" type="checkbox" ng-model="checked16" ng-model="newHero.knowArcana"/><label for="knowArcana">Knowledge Arcana</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowArcanaRanks" ng-disabled="!checked16"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowArcanaMM" ng-disabled="!checked16"></div>
+			<div class="newInput col s2"><input id="knowArcana" type="checkbox" ng-model="newHero.knowArcana"/><label for="knowArcana">Knowledge Arcana</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowArcanaRanks" ng-disabled="!newHero.knowArcana"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowArcanaMM" ng-disabled="!newHero.knowArcana"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowDungeon" type="checkbox" ng-model="checked17" ng-model="newHero.knowDungeon"/><label for="knowDungeon">Knowledge Dungeoneering</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowDungeonRanks" ng-disabled="!checked17"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowDungeonMM" ng-disabled="!checked17"></div>
+			<div class="newInput col s2"><input id="knowDungeon" type="checkbox" ng-model="newHero.knowDungeon"/><label for="knowDungeon">Knowledge Dungeoneering</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowDungeonRanks" ng-disabled="!newHero.knowDungeon"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowDungeonMM" ng-disabled="!newHero.knowDungeon"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowGeography" type="checkbox" ng-model="checked18" ng-model="newHero.knowGeography"/><label for="knowGeography">Knowledge Geography</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowGeographyRanks" ng-disabled="!checked18"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowGeographyMM" ng-disabled="!checked18"></div>
+			<div class="newInput col s2"><input id="knowGeography" type="checkbox" ng-model="newHero.knowGeography"/><label for="knowGeography">Knowledge Geography</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowGeographyRanks" ng-disabled="!newHero.knowGeography"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowGeographyMM" ng-disabled="!newHero.knowGeography"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowHistory" type="checkbox" ng-model="checked19" ng-model="newHero.knowHistory"/><label for="knowHistory">Knowledge History</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowHistoryRanks" ng-disabled="!checked19"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowHistoryMM" ng-disabled="!checked19"></div>
+			<div class="newInput col s2"><input id="knowHistory" type="checkbox" ng-model="newHero.knowHistory"/><label for="knowHistory">Knowledge History</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowHistoryRanks" ng-disabled="!newHero.knowHistory"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowHistoryMM" ng-disabled="!newHero.knowHistory"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowLocal" type="checkbox" ng-model="checked20" ng-model="newHero.knowLocal"/><label for="knowLocal">Knowledge Local</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowLocalRanks" ng-disabled="!checked20"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowLocalMM" ng-disabled="!checked20"></div>
+			<div class="newInput col s2"><input id="knowLocal" type="checkbox" ng-model="newHero.knowLocal"/><label for="knowLocal">Knowledge Local</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowLocalRanks" ng-disabled="!newHero.knowLocal"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowLocalMM" ng-disabled="!newHero.knowLocal"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowNature" type="checkbox" ng-model="checked21" ng-model="newHero.knowNature"/><label for="knowNature">Knowledge Nature</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowNatureRanks" ng-disabled="!checked21"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowNatureMM" ng-disabled="!checked21"></div>
+			<div class="newInput col s2"><input id="knowNature" type="checkbox" ng-model="newHero.knowNature"/><label for="knowNature">Knowledge Nature</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowNatureRanks" ng-disabled="!newHero.knowNature"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowNatureMM" ng-disabled="!newHero.knowNature"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowNobility" type="checkbox" ng-model="checked22" ng-model="newHero.knowNobility"/><label for="knowNobility">Knowledge Nobility</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowNobilityRanks" ng-disabled="!checked22"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowNobilityMM" ng-disabled="!checked22"></div>
+			<div class="newInput col s2"><input id="knowNobility" type="checkbox" ng-model="newHero.knowNobility"/><label for="knowNobility">Knowledge Nobility</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowNobilityRanks" ng-disabled="!newHero.knowNobility"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowNobilityMM" ng-disabled="!newHero.knowNobility"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowPlanes" type="checkbox" ng-model="checked23" ng-model="newHero.knowPlanes"/><label for="knowPlanes">Knowledge Planes</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowPlanesRanks" ng-disabled="!checked23"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowPlanesMM" ng-disabled="!checked23"></div>
+			<div class="newInput col s2"><input id="knowPlanes" type="checkbox" ng-model="newHero.knowPlanes"/><label for="knowPlanes">Knowledge Planes</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowPlanesRanks" ng-disabled="!newHero.knowPlanes"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowPlanesMM" ng-disabled="!newHero.knowPlanes"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="knowReligion" type="checkbox" ng-model="checked24" ng-model="newHero.knowReligion"/><label for="knowReligion">Knowledge Religion</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.knowReligionRanks" ng-disabled="!checked24"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowReligionMM" ng-disabled="!checked24"></div>
+			<div class="newInput col s2"><input id="knowReligion" type="checkbox" ng-model="newHero.knowReligion"/><label for="knowReligion">Knowledge Religion</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.knowReligionRanks" ng-disabled="!newHero.knowReligion"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.knowReligionMM" ng-disabled="!newHero.knowReligion"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="linguistics" type="checkbox" ng-model="checked25" ng-model="newHero.linguistics"/><label for="linguistics">Linguistics</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.linguisticsRanks" ng-disabled="!checked25"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.linguisticsMM" ng-disabled="!checked25"></div>
+			<div class="newInput col s2"><input id="linguistics" type="checkbox" ng-model="newHero.linguistics"/><label for="linguistics">Linguistics</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.linguisticsRanks" ng-disabled="!newHero.linguistics"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.linguisticsMM" ng-disabled="!newHero.linguistics"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="perception" type="checkbox" ng-model="checked26" ng-model="newHero.perception"/><label for="perception">Perception</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.perceptionRanks" ng-disabled="!checked26"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perceptionMM" ng-disabled="!checked26"></div>
+			<div class="newInput col s2"><input id="perception" type="checkbox" ng-model="newHero.perception"/><label for="perception">Perception</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.perceptionRanks" ng-disabled="!newHero.perception"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perceptionMM" ng-disabled="!newHero.perception"></div>
 		</div>			
 		<div class="row">
-			<div class="newInput col s2"><input id="perform1" type="checkbox" ng-model="checked27" ng-model="newHero.perform1"/><label for="perform1">Perform</label><input placeholder="type..." ng-disabled="!checked27" ng-model="newHero.perform1Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.perform1TypeRanks" ng-disabled="!checked27"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perform1TypeMM" ng-disabled="!checked27"></div>
+			<div class="newInput col s2"><input id="perform1" type="checkbox" ng-model="newHero.perform1"/><label for="perform1">Perform</label><input placeholder="type..." ng-disabled="!newHero.perform1" ng-model="newHero.perform1Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.perform1TypeRanks" ng-disabled="!newHero.perform1"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perform1TypeMM" ng-disabled="!newHero.perform1"></div>
 		</div>			
 		<div class="row">
-			<div class="newInput col s2"><input id="perform2" type="checkbox" ng-model="checked28" ng-model="newHero.perform2"/><label for="perform2">Perform</label><input placeholder="type..." ng-disabled="!checked28" ng-model="newHero.perform2Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.perform2TypeRanks" ng-disabled="!checked28"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perform2TypeMM" ng-disabled="!checked28"></div>
+			<div class="newInput col s2"><input id="perform2" type="checkbox" ng-model="newHero.perform2"/><label for="perform2">Perform</label><input placeholder="type..." ng-disabled="!newHero.perform2" ng-model="newHero.perform2Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.perform2TypeRanks" ng-disabled="!newHero.perform2"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.perform2TypeMM" ng-disabled="!newHero.perform2"></div>
 		</div>			
 		<div class="row">
-			<div class="newInput col s2"><input id="profession1" type="checkbox" ng-model="checked29" ng-model="newHero.profession1"/><label for="profession1">Profession</label><input placeholder="type..." ng-disabled="!checked29" ng-model="newHero.profession1Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.profession1TypeRanks" ng-disabled="!checked29"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.profession1TypeMM" ng-disabled="!checked29"></div>
+			<div class="newInput col s2"><input id="profession1" type="checkbox" ng-model="newHero.profession1"/><label for="profession1">Profession</label><input placeholder="type..." ng-disabled="!newHero.profession1" ng-model="newHero.profession1Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.profession1TypeRanks" ng-disabled="!newHero.profession1"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.profession1TypeMM" ng-disabled="!newHero.profession1"></div>
 		</div>			
 		<div class="row">
-			<div class="newInput col s2"><input id="profession2" type="checkbox" ng-model="checked30" ng-model="newHero.profession2"/><label for="profession2">Profession</label><input placeholder="type..." ng-disabled="!checked30" ng-model="newHero.profession2Type"></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.profession2TypeRanks" ng-disabled="!checked30"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.profession2TypeMM" ng-disabled="!checked30"></div>
+			<div class="newInput col s2"><input id="profession2" type="checkbox" ng-model="newHero.profession2"/><label for="profession2">Profession</label><input placeholder="type..." ng-disabled="!newHero.profession2" ng-model="newHero.profession2Type"></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.profession2TypeRanks" ng-disabled="!newHero.profession2"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.profession2TypeMM" ng-disabled="!newHero.profession2"></div>
 		</div>
 		<div class="row">
-			<div class="newInput col s2"><input id="ride" type="checkbox" ng-model="checked31" ng-model="newHero.ride"/><label for="ride">Ride</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.rideRanks" ng-disabled="!checked31"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.rideMM" ng-disabled="!checked31"></div>
+			<div class="newInput col s2"><input id="ride" type="checkbox" ng-model="newHero.ride"/><label for="ride">Ride</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.rideRanks" ng-disabled="!newHero.ride"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.rideMM" ng-disabled="!newHero.ride"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="senseMotive" type="checkbox" ng-model="checked32" ng-model="newHero.senseMotive"/><label for="senseMotive">Sense Motive</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.senseMotiveRanks" ng-disabled="!checked32"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.senseMotiveMM" ng-disabled="!checked32"></div>
+			<div class="newInput col s2"><input id="senseMotive" type="checkbox" ng-model="newHero.senseMotive"/><label for="senseMotive">Sense Motive</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.senseMotiveRanks" ng-disabled="!newHero.senseMotive"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.senseMotiveMM" ng-disabled="!newHero.senseMotive"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="sleightOfHand" type="checkbox" ng-model="checked33" ng-model="newHero.sleightOfHand"/><label for="sleightOfHand">Sleight Of Hand</label></div>	
-			<div class="newInput col s3">Ranks<input ng-stealth="newHero.sleightOfHandRanks" ng-disabled="!checked33"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.sleightOfHandMM" ng-disabled="!checked33"></div>
+			<div class="newInput col s2"><input id="sleightOfHand" type="checkbox" ng-model="newHero.sleightOfHand"/><label for="sleightOfHand">Sleight Of Hand</label></div>	
+			<div class="newInput col s3">Ranks<input ng-stealth="newHero.sleightOfHandRanks" ng-disabled="!newHero.sleightOfHand"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.sleightOfHandMM" ng-disabled="!newHero.sleightOfHand"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="spellCraft" type="checkbox" ng-model="checked34" ng-model="newHero.spellCraft"/><label for="spellCraft">SpellCraft</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.spellCraftRanks" ng-disabled="!checked34"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.spellCraftMM" ng-disabled="!checked34"></div>
+			<div class="newInput col s2"><input id="spellCraft" type="checkbox" ng-model="newHero.spellCraft"/><label for="spellCraft">SpellCraft</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.spellCraftRanks" ng-disabled="!newHero.spellCraft"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.spellCraftMM" ng-disabled="!newHero.spellCraft"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="stealth" type="checkbox" ng-model="checked35" ng-model="newHero.stealth"/><label for="stealth">Stealth</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.stealthRanks" ng-disabled="!checked35"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.stealthMM" ng-disabled="!checked35"></div>
+			<div class="newInput col s2"><input id="stealth" type="checkbox" ng-model="newHero.stealth"/><label for="stealth">Stealth</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.stealthRanks" ng-disabled="!newHero.stealth"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.stealthMM" ng-disabled="!newHero.stealth"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="survival" type="checkbox" ng-model="checked36" ng-model="newHero.survival"/><label for="survival">Survival</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.survivalRanks" ng-disabled="!checked36"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.survivalMM" ng-disabled="!checked36"></div>
+			<div class="newInput col s2"><input id="survival" type="checkbox" ng-model="newHero.survival"/><label for="survival">Survival</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.survivalRanks" ng-disabled="!newHero.survival"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.survivalMM" ng-disabled="!newHero.survival"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="swim" type="checkbox" ng-model="checked37" ng-model="newHero.swim"/><label for="swim">Swim</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.swimRanks" ng-disabled="!checked37"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.swimMM" ng-disabled="!checked37"></div>
+			<div class="newInput col s2"><input id="swim" type="checkbox" ng-model="newHero.swim"/><label for="swim">Swim</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.swimRanks" ng-disabled="!newHero.swim"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.swimMM" ng-disabled="!newHero.swim"></div>
 		</div>	
 		<div class="row">
-			<div class="newInput col s2"><input id="useMagicDevice" type="checkbox" ng-model="checked38" ng-model="newHero.useMagicDevice"/><label for="useMagicDevice">Use Magic Device</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newHero.useMagicDeviceRanks" ng-disabled="!checked38"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.useMagicDeviceMM" ng-disabled="!checked38"></div>
+			<div class="newInput col s2"><input id="useMagicDevice" type="checkbox" ng-model="newHero.useMagicDevice"/><label for="useMagicDevice">Use Magic Device</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newHero.useMagicDeviceRanks" ng-disabled="!newHero.useMagicDevice"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.useMagicDeviceMM" ng-disabled="!newHero.useMagicDevice"></div>
 		</div>	
 	</div>
+	<button ng-click="addNewHero()">Submit</button>
 </div>
 
