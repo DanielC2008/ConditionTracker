@@ -9,5 +9,10 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		$location.url("#/tracker/hero");
 	});
 
+	$scope.add = function(a,b) {
+		console.log("a", a);
+		return parseInt(a) + parseInt(b);
+	}
+
 
 });

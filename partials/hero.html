@@ -1,22 +1,52 @@
-<div class="">
-		<div class="row">
-
-			<div class="col s3 center-align">{{hero.characterName}}</div>
+<div class="row">
+ 	<div class="col s3">
+    <div class="col s12">
+      <div class="card">
+				<div class="card-image">
+					<img class="responsive-img" src="../img/Darth_Maul.png" alt="">
+				</div>
 			</div>
-	<!-- 		<div class="col s1 center-align">{{Alignment}}</div>
-			<div class="col s3 center-align">{{Player}}</div>
-			<div class="col s3 center-align">{{Level}}</div>
-			<div class="col s1 center-align">{{Diety}}</div>
-			<div class="col s3 center-align">{{Homeland}}</div>
-			<div class="col s2 center-align">{{Race}}</div>
-			<div class="col s2 center-align">{{Size}}</div>
-			<div class="col s2 center-align">{{Gender}}</div>
-			<div class="col s1 center-align">{{Age}}</div>
-			<div class="col s2 center-align">{{Height}}</div>
-			<div class="col s2 center-align">{{Weight}}</div>
-			<div class="col s2 center-align">{{Hair}}</div>
-			<div class="col s1 center-align">{{Eyes}}</div>
 		</div>
+	</div>			
+	<div class="col s9">
+		<div class="row">
+			<div class="col s4">Character Name: {{hero.characterName}}</div>
+			<div class="col s4">Alignment: {{hero.alignment}}</div>
+			<div class="col s4">Level: {{hero.level}}</div>
+		</div>
+		<div class="row">
+			<div class="col s4">Diety: {{hero.diety}}</div>
+			<div class="col s4">Homeland: {{hero.homeland}}</div>
+			<div class="col s4">Race: {{hero.race}}</div>
+		</div>
+		<div class="row">
+			<div class="col s4">Size:{{hero.size}}</div>
+			<div class="col s4">Gender: {{hero.gender}}</div>
+			<div class="col s4">Age: {{hero.age}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Height: {{hero.height}}</div>
+			<div class="col s2">Weight: {{hero.weight}}</div>
+			<div class="col s4">Hair: {{hero.hair}}</div>
+			<div class="col s4">Eyes: {{hero.eyes}}</div>
+		</div>
+		<div class="row">
+			<div class="col s4">
+				<div class="col s12">Current HP: CUR</div>
+				<div class="col s12">Total HP: {{hero.healthPoints}}</div>
+				<div class="col s12">DR: {{hero.damageReduction}}</div>
+			</div>
+			<div class="col s4">
+				<div class="col s12">Initiation: {{add(hero.dexterity, hero.MMinitiation)}}</div>
+				<div class="col s12">Dex: {{hero.dexterity}}</div>
+				<div class="col s12">Init Modifiers: {{hero.MMinitiation}}</div>
+			</div>
+			<div class="col s2">
+				<div class="col s2">Speed:{{hero.speed}}</div>
+			</div>	
+		</div>
+	</div>
+</div>
 
 	<div class="row">
 		<div class="col s4">
@@ -25,19 +55,8 @@
 			<div class="col s3">Ability Mod</div>
 			<div class="col s3">Temp Mod</div>
 		</div>
-		<div class="col s3">
-			<div class="col s1 offset-s2">HP:</div>
-			<div class="col s4">{{HP}}</div>
-			<div class="col s4">{{DR}}</div>
-		</div>
-		<div class="col s2">
-			<div class="col s3">Init:</div>
-			<div class="col s4">{{Init}}</div>
-		</div>
-		<div class="col s2">
-			<div class="col s3">Spd:</div>
-			<div class="col s4">{{Spd}}</div>
-		</div>
+
+
 		<div class="col s8 center align">Skills
 		</div>
 			<div class="col s3 offset-s4">Skill Names</div>
@@ -52,41 +71,41 @@
 	<div class="row">
 		<div class="col s4">
 			<div class="col s3 center align">Str</div>
-			<div class="col s3 center align">{{Str.score}}</div>
-			<div class="col s3 center align">+{{Str.mod}}</div>
-			<div class="col s3 center align">{{Str.temp}}</div>
+			<div class="col s3 center align">{{Total}}</div>
+			<div class="col s3 center align">+{{hero.strength}}</div>
+			<div class="col s3 center align">{{hero.Str.temp}}</div>
 		</div>
 	</div>	
 	<div class="row">
 		<div class="col s4">
 			<div class="col s3 center align">Dex</div>
-			<div class="col s3 center align">{{Dex.score}}</div>
-			<div class="col s3 center align">+{{Dex.mod}}</div>
-			<div class="col s3 center align">{{Dex.temp}}</div>
+			<div class="col s3 center align">{{Total}}</div>
+			<div class="col s3 center align">+{{hero.dexterity}}</div>
+			<div class="col s3 center align">{{hero.Dex.temp}}</div>
 		</div>
 	</div>	
 	<div class="row">
 		<div class="col s4">
 			<div class="col s3 center align">Con</div>
-			<div class="col s3 center align">{{Con.score}}</div>
-			<div class="col s3 center align">+{{Con.mod}}</div>
-			<div class="col s3 center align">{{Con.temp}}</div>
+			<div class="col s3 center align">{{Total}}</div>
+			<div class="col s3 center align">+{{hero.constitution}}</div>
+			<div class="col s3 center align">{{hero.Con.temp}}</div>
 		</div>
 	</div>	
 	<div class="row">
 		<div class="col s4">
 			<div class="col s3 center align">Int</div>
-			<div class="col s3 center align">{{Int.score}}</div>
-			<div class="col s3 center align">+{{Int.mod}}</div>
-			<div class="col s3 center align">{{Int.temp}}</div>
+			<div class="col s3 center align">{{Total}}</div>
+			<div class="col s3 center align">+{{hero.intelligence}}</div>
+			<div class="col s3 center align">{{hero.Int.temp}}</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col s4">
 			<div class="col s3 center align">Wis</div>
-			<div class="col s3 center align">{{Wis.score}}</div>
-			<div class="col s3 center align">+{{Wis.mod}}</div>
-			<div class="col s3 center align">{{Wis.temp}}</div>
+			<div class="col s3 center align">{{Total}}</div>
+			<div class="col s3 center align">+{{hero.wisdom}}</div>
+			<div class="col s3 center align">{{hero.Wis.temp}}</div>
 		</div>
-	</div>	 -->
+	</div>	
 </div> 
