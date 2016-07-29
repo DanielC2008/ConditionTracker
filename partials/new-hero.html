@@ -1,56 +1,65 @@
 <div>Hero
 	<div class="container">
-		<div class="newInput">Character Name<input ng-model="newHero.characterName"></div>
-		<div class="newInput">Alignment<input ng-model="newHero.alignment"></div>
-		<div class="newInput">Character Level<input ng-model="newHero.level"></div>
-		<div class="newInput">Deity<input ng-model="newHero.deity"></div>
-		<div class="newInput">Homeland<input ng-model="newHero.homeland"></div>
-		<div class="newInput">Race<input ng-model="newHero.race"></div>
-		<div class="newInput">Size<input ng-model="newHero.size"></div>
-		<div class="newInput">Age<input ng-model="newHero.gender"></div>
-		<div class="newInput">Gender<input ng-model="newHero.gender"></div>
-		<div class="newInput">Height<input ng-model="newHero.height"></div>
-		<div class="newInput">Weight<input ng-model="newHero.weight"></div>
-		<div class="newInput">Hair<input ng-model="newHero.hair"></div>
-		<div class="newInput">Eyes<input ng-model="newHero.eyes"></div>
+		<div class="row">
+			<div class="newInput col s4">Character Name<input ng-model="newHero.characterName"></div>
+			<div class="newInput col s4">Alignment<input ng-model="newHero.alignment"></div>
+			<div class="newInput col s4">Character Level<input ng-model="newHero.level"></div>
+			<div class="newInput col s4">Deity<input ng-model="newHero.deity"></div>
+			<div class="newInput col s4">Homeland<input ng-model="newHero.homeland"></div>
+			<div class="newInput col s4">Race<input ng-model="newHero.race"></div>
+			<div class="newInput col s4">Size<input ng-model="newHero.size"></div>
+			<div class="newInput col s4">Age<input ng-model="newHero.age"></div>
+			<div class="newInput col s4">Gender<input ng-model="newHero.gender"></div>
+			<div class="newInput col s4">Height<input ng-model="newHero.height"></div>
+			<div class="newInput col s4">Weight<input ng-model="newHero.weight"></div>
+			<div class="newInput col s4">Hair<input ng-model="newHero.hair"></div>
+			<div class="newInput col s4 offset-s4">Eyes<input ng-model="newHero.eyes"></div>
+		</div>
 	</div>
 </div>		
+
 <div>Abilities
 	<div class="container">
-		<div class="newInput">STR<input ng-model="newHero.strength"></div>
-		<div class="newInput">DEX<input ng-model="newHero.dexterity"></div>
-		<div class="newInput">CON<input ng-model="newHero.constitution"></div>
-		<div class="newInput">INT<input ng-model="newHero.intelligence"></div>
-		<div class="newInput">WIS<input ng-model="newHero.wisdom"></div>
-	</div>
+		<div class="row">
+			<div class="newInput">STR<input ng-model="newHero.strength"></div>
+			<div class="newInput">DEX<input ng-model="newHero.dexterity"></div>
+			<div class="newInput">CON<input ng-model="newHero.constitution"></div>
+			<div class="newInput">INT<input ng-model="newHero.intelligence"></div>
+			<div class="newInput">WIS<input ng-model="newHero.wisdom"></div>
+		</div>
+	</div>	
 </div>
+
 <div>Mettle
 	<div class="container">
-		<div class="newInput">HP<input ng-model="newHero.healthPoints"></div>
-		<div class="newInput">DR<input ng-model="newHero.damageReduction"></div>
-		<div class="newInput">Misc. Initiation Mod<input ng-model="newHero.MMintiation"></div>
-		<div class="newInput">Armor Bonus<input ng-model="newHero.armorBonus"></div>
-		<div class="newInput">Shield Bonus<input ng-model="newHero.shieldBonus"></div>
-		<div class="newInput">Size Modifier<input ng-model="newHero.sizeMod"></div>
-		<div class="newInput">Natural Armor<input ng-model="newHero.naturalArmor"></div>
-		<div class="newInput">Deflection Modifier<input ng-model="newHero.deflectionMod"></div>
-		<div class="newInput">Misc. Armor Mod<input ng-model="newHero.MMArmor"></div>
-		<div class="newInput">Fortitude Base<input ng-model="newHero.baseFort"></div>
-		<div class="newInput">Fortitude: Magic Modifier<input ng-model="newHero.magicFort"></div>
-		<div class="newInput">Fortitude: Misc. Modifier<input ng-model="newHero.MMFort"></div>
-		<div class="newInput">Reflex: Base<input ng-model="newHero.baseRef"></div>
-		<div class="newInput">Reflex: Magic Modifier<input ng-model="newHero.magicRef"></div>
-		<div class="newInput">Reflex: Misc. Modifier<input ng-model="newHero.MMRef"></div>
-		<div class="newInput">Will: Base<input ng-model="newHero.baseWill"></div>
-		<div class="newInput">Will: Magic Modifier<input ng-model="newHero.magicWill"></div>
-		<div class="newInput">Will: Misc. Modifier<input ng-model="newHero.MMWill"></div>
-		<div class="newInput">BAB<input ng-model="newHero.baseAttackBonus"></div>
-		<div class="newInput">Spell Resistance<input ng-model="newHero.spellResistance"></div>
-		<div class="newInput">CMB Misc. Modifier<input ng-model="newHero.MMCMB"></div>
-		<div class="newInput">CMD Misc. Modifier<input ng-model="newHero.MMCMD"></div>
-		<div class="newInput"><input id="dodge" type="checkbox" ng-model="newHero.dodge"/><label for="dodge">Dodge</label></div>	
+		<div class="row">
+			<div class="newInput">HP<input ng-model="newHero.healthPoints"></div>
+			<div class="newInput">DR<input ng-model="newHero.damageReduction"></div>
+			<div class="newInput">Misc. Initiation Mod<input ng-model="newHero.MMintiation"></div>
+			<div class="newInput">Armor Bonus<input ng-model="newHero.armorBonus"></div>
+			<div class="newInput">Shield Bonus<input ng-model="newHero.shieldBonus"></div>
+			<div class="newInput">Size Modifier<input ng-model="newHero.sizeMod"></div>
+			<div class="newInput">Natural Armor<input ng-model="newHero.naturalArmor"></div>
+			<div class="newInput">Deflection Modifier<input ng-model="newHero.deflectionMod"></div>
+			<div class="newInput">Misc. Armor Mod<input ng-model="newHero.MMArmor"></div>
+			<div class="newInput">Fortitude Base<input ng-model="newHero.baseFort"></div>
+			<div class="newInput">Fortitude: Magic Modifier<input ng-model="newHero.magicFort"></div>
+			<div class="newInput">Fortitude: Misc. Modifier<input ng-model="newHero.MMFort"></div>
+			<div class="newInput">Reflex: Base<input ng-model="newHero.baseRef"></div>
+			<div class="newInput">Reflex: Magic Modifier<input ng-model="newHero.magicRef"></div>
+			<div class="newInput">Reflex: Misc. Modifier<input ng-model="newHero.MMRef"></div>
+			<div class="newInput">Will: Base<input ng-model="newHero.baseWill"></div>
+			<div class="newInput">Will: Magic Modifier<input ng-model="newHero.magicWill"></div>
+			<div class="newInput">Will: Misc. Modifier<input ng-model="newHero.MMWill"></div>
+			<div class="newInput">BAB<input ng-model="newHero.baseAttackBonus"></div>
+			<div class="newInput">Spell Resistance<input ng-model="newHero.spellResistance"></div>
+			<div class="newInput">CMB Misc. Modifier<input ng-model="newHero.MMCMB"></div>
+			<div class="newInput">CMD Misc. Modifier<input ng-model="newHero.MMCMD"></div>
+			<div class="newInput"><input id="dodge" type="checkbox" ng-model="newHero.dodge"/><label for="dodge">Dodge</label></div>	
+		</div>
 	</div>
 </div>
+
 <div>Skills
 	<div class="container">
 		<div class="row">
@@ -244,8 +253,6 @@
 			<div class="newInput col s3">Ranks<input ng-model="newHero.useMagicDeviceRanks" ng-disabled="!checked38"></div>
 			<div class="newInput col s3">Misc. Mod<input ng-model="newHero.useMagicDeviceMM" ng-disabled="!checked38"></div>
 		</div>	
-	
-
-
+	</div>
 </div>
 
