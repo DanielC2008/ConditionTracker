@@ -1,16 +1,23 @@
 "use strict";
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
-	
-	HeroFactory.getHero()
+	let key = HeroFactory.getHeroKey();
+
+	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		console.log(currHero);
-		$scope.hero = currHero[0];
-		$location.url("#/tracker/hero");
-	});
+		$scope.hero = currHero;
+	})
+	.then(function(){
+		HeroFactory.getAbility(key)
+		.then(function(currAbility){
+			console.log(currAbility);
+			$scope.abilities = currAbility;
+			$location.url("#/tracker/hero");
+		})
+	})
 
 	$scope.add = function(a,b) {
-		console.log("a", a);
 		return parseInt(a) + parseInt(b);
 	}
 

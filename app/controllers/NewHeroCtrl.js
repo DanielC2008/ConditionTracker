@@ -6,7 +6,7 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 		$scope.newHero.uid = AuthFactory.getUser();
 		HeroFactory.postNewHero($scope.newHero)
 		.then(function() {
-			$location.url("/tracker/hero");
+			$location.url("/tracker/newAbility");
 		});
 	};
 
@@ -24,11 +24,11 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 		weight : "",
 		hair : "",
 		eyes : "",
-		strength : "",
-		dexterity : "",
-		constitution : "",
-		intelligence : "",
-		wisdom : "",
+		// strength : "",
+		// dexterity : "",
+		// constitution : "",
+		// intelligence : "",
+		// wisdom : "",
 		healthPoints : "",
 		damageReduction : "",
 		MMinitiation : "",
