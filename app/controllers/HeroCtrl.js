@@ -11,7 +11,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	.then(function(){
 		HeroFactory.getAbility(key)
 		.then(function(currAbility){
-			console.log(currAbility);
 			$scope.abilities = currAbility;
 			$location.url("#/tracker/hero");
 		})

@@ -56,37 +56,43 @@
 			<div class="col s3">Ability Mod</div>
 			<div class="col s3">Temp Mod</div>
 		</div>
-		<div class="row">
-			<div class="col s3 center align">Str</div>
-			<div class="col s3 center align">{{Total}}</div>
-			<div class="col s3 center align">+{{abilities.strength}}</div>
-			<div class="col s3 center align">{{hero.Str.temp}}</div>
+		<div ng-repeat="ability in abilities track by $index">
+			
+		<div ng-repeat="(key, value) in ability" ng-hide="key === 'heroKey' || key === 'uid'">
+			<div class="row">
+				<div class="col s3 center align">{{key}}</div>
+				<div class="col s3 center align">{{value}}</div>
+				<div class="col s3 center align">+{{Mod}}</div>
+				<div class="col s3 center align"></div>
+			</div>		
 		</div>
-		<div class="row">
+	</div>
+		</div>
+		<!-- <div class="row">
 			<div class="col s3 center align">Dex</div>
-			<div class="col s3 center align">{{Total}}</div>
-			<div class="col s3 center align">+{{hero.dexterity}}</div>
-			<div class="col s3 center align">{{hero.Dex.temp}}</div>
+			<div class="col s3 center align">{{abilities.dexterity}}</div>
+			<div class="col s3 center align">+</div>
+			<div class="col s3 center align">{{abilities.Dex.temp}}</div>
 		</div>
 		<div class="row">
 			<div class="col s3 center align">Con</div>
-			<div class="col s3 center align">{{Total}}</div>
-			<div class="col s3 center align">+{{hero.constitution}}</div>
-			<div class="col s3 center align">{{hero.Con.temp}}</div>
+			<div class="col s3 center align">{{abilities.constitution}}</div>
+			<div class="col s3 center align">+</div>
+			<div class="col s3 center align">{{abilities.Con.temp}}</div>
 		</div>
 		<div class="row">
 			<div class="col s3 center align">Int</div>
-			<div class="col s3 center align">{{Total}}</div>
-			<div class="col s3 center align">+{{hero.intelligence}}</div>
-			<div class="col s3 center align">{{hero.Int.temp}}</div>
+			<div class="col s3 center align">{{abilities.intelligence}}</div>
+			<div class="col s3 center align">+</div>
+			<div class="col s3 center align">{{abilities.Int.temp}}</div>
 		</div>
 		<div class="row">
 			<div class="col s3 center align">Wis</div>
-			<div class="col s3 center align">{{Total}}</div>
-			<div class="col s3 center align">+{{hero.wisdom}}</div>
-			<div class="col s3 center align">{{hero.Wis.temp}}</div>
+			<div class="col s3 center align">{{abilities.wisdom}}</div>
+			<div class="col s3 center align">+</div>
+			<div class="col s3 center align">{{abilities.Wis.temp}}</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="col s7 center align">Skills
 		<div class="row">
 			<div class="col s2">Skill Names</div>
