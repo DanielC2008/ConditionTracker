@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
-	let heroKey = ["-KO2Xsc4PP0ja-ku_G2i"];
+	let heroKey = ["-KO34xdQPyIBv-WNjMaE"];
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
 		return $q(function(resolve, reject) {
@@ -31,18 +31,26 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		});
 	};
 
+	const postNewMettle = function(newMettle) {
+		newMettle.heroKey = heroKey[0];
+		return $q(function(resolve, reject) {
+			$http.post(`${FirebaseURL}/mettle.json`, 
+			JSON.stringify(newMettle))
+			.success(function() {
+				resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
 
 ////////////// GET////////////
 	const getHero = function(key) {
-		let hero = [];
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/heros/${key}.json`)
 			.success(function(heroObj) {
-				
-				// let currHero = heroObj;
-				// Object.keys(currHero).forEach(function(key){
-				// 	hero.push(currHero[key]);
-				// });
 				resolve(heroObj);
 			})
 			.error(function(error) {
@@ -57,11 +65,11 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			$http.get(`${FirebaseURL}/abilities.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroAbl) {
 				for (let obj in heroAbl) {
-					Object.keys(heroAbl[obj]).forEach(function(curr, index) {
+					Object.keys(heroAbl[obj]).forEach(function(curr) {
 						let currObj = {};
 						currObj[`${curr}`] = heroAbl[obj][curr];
 						abilities.push(currObj);
-					})
+					});
 				}
 				resolve(abilities);
 			})
@@ -71,6 +79,28 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		});
 	};
 
+	const getMettle = function(key) {
+		console.log(key);
+		// let abilities = [];
+		return $q(function(resolve, reject) {
+			$http.get(`${FirebaseURL}/mettle.json?orderBy="heroKey"&equalTo="${key}"`)
+			.success(function(heroMet) {
+				for (let obj in heroMet) {
+					let mettle = heroMet[obj];
+					resolve(mettle);
+				}
+					// Object.keys(heroAbl[obj]).forEach(function(curr, index) {
+					// 	let currObj = {};
+					// 	currObj[`${curr}`] = heroAbl[obj][curr];
+					// 	abilities.push(currObj);
+					// })
+				// }
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
 
 	const getHeroKey = function() {
 		return heroKey[0];
@@ -81,5 +111,5 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	// };
 
 
-	return {postNewHero, postNewAbility, getHero, getHeroKey, getAbility};
+	return {postNewHero, postNewAbility, postNewMettle, getHero, getHeroKey, getAbility, getMettle};
 });

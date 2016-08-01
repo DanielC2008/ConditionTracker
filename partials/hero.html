@@ -32,15 +32,15 @@
 		</div>
 		<div class="row">
 			<div class="col s6">
-				<div class="col s12">Current HP: {{hero.currHealth}}</div>
+				<div class="col s12">Current HP: {{mettle.currHealth}}</div>
 				<input class="col s5" placeholder="Damage..." ng-model="healthChange" ng-keyup="$event.keyCode == 13 && applyChange(healthChange)"/>
-				<div class="col s12">Total HP: {{hero.healthPoints}}</div>
-				<div class="col s12">DR: {{hero.damageReduction}}</div>
+				<div class="col s12">Total HP: {{mettle.healthPoints}}</div>
+				<div class="col s12">DR: {{mettle.damageReduction}}</div>
 			</div>
 			<div class="col s4">
-				<div class="col s12">Initiation: {{add(DEX, hero.MMinitiation)}}</div>
+				<div class="col s12">Initiation: {{add(DEX, mettle.MMinitiation)}}</div>
 				<div class="col s12" >Dex: {{DEX}}</div>
-				<div class="col s12">Init Modifiers: {{hero.MMinitiation}}</div>
+				<div class="col s12">Init Modifiers: {{mettle.MMinitiation}}</div>
 			</div>
 			<div class="col s2">
 				<div class="col s2">Speed:{{hero.speed}}</div>
@@ -63,7 +63,7 @@
 					<div class="col s3 center align">{{key}}</div>
 					<div class="col s3 center align">{{value}}</div>
 					<div class="col s3 center align" ng-bind="{{key}}"></div>
-					<input class="col s3 center align" ng-model="tempMod">
+					<input class="col s3 center align" ng-model="temp" ng-keyup="$event.keyCode == 13 && tempMod(key, temp)"/>
 				</div>		
 			</div>
 		</div>

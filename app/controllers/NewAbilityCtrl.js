@@ -6,7 +6,7 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 		$scope.newAbility.uid = AuthFactory.getUser();
 		HeroFactory.postNewAbility($scope.newAbility)
 		.then(function() {
-			$location.url("/tracker/hero");
+			$location.url("/tracker/newMettle");
 		});
 	};
 
