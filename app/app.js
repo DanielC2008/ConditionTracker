@@ -20,6 +20,14 @@ when("/tracker/newHero", {
 	templateUrl: "partials/new-hero.html",
 	controller: "NewHeroCtrl"
 }).
+when("/tracker/newAbility", {
+	templateUrl: "partials/new-ability.html",
+	controller: "NewAbilityCtrl"
+}).
+when("/tracker/newMettle", {
+	templateUrl: "partials/new-mettle.html",
+	controller: "NewMettleCtrl"
+}).
 when("/tracker/hero", {
 	templateUrl: "partials/hero.html",
 	controller: "HeroCtrl"

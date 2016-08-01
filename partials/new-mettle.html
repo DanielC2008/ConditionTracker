@@ -1,0 +1,31 @@
+<div>Mettle
+	<div class="container">
+		<div class="row">
+			<div class="newInput">HP<input ng-model="newMettle.healthPoints"></div>
+			<div class="newInput">DR<input ng-model="newMettle.damageReduction"></div>
+			<div class="newInput">Misc. Initiation Mod<input ng-model="newMettle.MMinitiation"></div>
+			<div class="newInput">Armor Bonus<input ng-model="newMettle.armorBonus"></div>
+			<div class="newInput">Shield Bonus<input ng-model="newMettle.shieldBonus"></div>
+			<div class="newInput">Size Modifier<input ng-model="newMettle.sizeMod"></div>
+			<div class="newInput">Natural Armor<input ng-model="newMettle.naturalArmor"></div>
+			<div class="newInput">Deflection Modifier<input ng-model="newMettle.deflectionMod"></div>
+			<div class="newInput">Misc. Armor Mod<input ng-model="newMettle.MMArmor"></div>
+			<div class="newInput">Fortitude Base<input ng-model="newMettle.baseFort"></div>
+			<div class="newInput">Fortitude: Magic Modifier<input ng-model="newMettle.magicFort"></div>
+			<div class="newInput">Fortitude: Misc. Modifier<input ng-model="newMettle.MMFort"></div>
+			<div class="newInput">Reflex: Base<input ng-model="newMettle.baseRef"></div>
+			<div class="newInput">Reflex: Magic Modifier<input ng-model="newMettle.magicRef"></div>
+			<div class="newInput">Reflex: Misc. Modifier<input ng-model="newMettle.MMRef"></div>
+			<div class="newInput">Will: Base<input ng-model="newMettle.baseWill"></div>
+			<div class="newInput">Will: Magic Modifier<input ng-model="newMettle.magicWill"></div>
+			<div class="newInput">Will: Misc. Modifier<input ng-model="newMettle.MMWill"></div>
+			<div class="newInput">BAB<input ng-model="newMettle.baseAttackBonus"></div>
+			<div class="newInput">Spell Resistance<input ng-model="newMettle.spellResistance"></div>
+			<div class="newInput">CMB Misc. Modifier<input ng-model="newMettle.MMCMB"></div>
+			<div class="newInput">CMD Misc. Modifier<input ng-model="newMettle.MMCMD"></div>
+			<div class="newInput">Speed in ft.<input ng-model="newMettle.speed"></div>
+			<div class="newInput"><input id="dodge" type="checkbox" ng-model="newMettle.dodge"/><label for="dodge">Dodge</label></div>	
+		</div>
+	</div>
+</div>
+	<button ng-click="addNewMettle()">Submit</button>
