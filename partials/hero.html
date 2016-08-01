@@ -38,7 +38,7 @@
 				<div class="col s12">DR: {{mettle.damageReduction}}</div>
 			</div>
 			<div class="col s4">
-				<div class="col s12">Initiation: {{add(DEX, mettle.MMinitiation)}}</div>
+				<div class="col s12">Initiative: {{add(DEX, mettle.MMinitiation)}}</div>
 				<div class="col s12" >Dex: {{DEX}}</div>
 				<div class="col s12">Init Modifiers: {{mettle.MMinitiation}}</div>
 			</div>
@@ -48,7 +48,6 @@
 		</div>
 	</div>
 </div>
-<!-- figure out how to get the modifiers in here -->
 <div class="row">
 	<div class="col s5">
 		<div class="row">
@@ -67,7 +66,32 @@
 				</div>		
 			</div>
 		</div>
+		<div class="row">
+			<div class="col s1">AC</div>
+			<div class="col s1"></div>
+			<div class="col s1">Armor</div>
+			<div class="col s1">Shield</div>
+			<div class="col s1">DEX</div>
+			<div class="col s1">Size</div>
+			<div class="col s2">Natural Armor</div>
+			<div class="col s2">Deflection</div>
+			<div class="col s1">Misc Mod</div>
 		</div>
+		<div>
+			<div class="col s1" ng-bind="armorClass"></div>
+			<div class="col s1"> = 10 +</div>
+			<div class="col s1">{{mettle.armorBonus}}</div>
+			<div class="col s1">{{mettle.shieldBonus}}</div>
+			<div class="col s1">{{DEX}}</div>
+			<div class="col s1">{{mettle.sizeMod}}</div>
+			<div class="col s1">{{mettle.naturalArmor}}</div>
+			<div class="col s1">{{mettle.deflectionMod}}</div>
+			<div class="col s1">{{mettle.MMArmor}}</div>			
+		</div>
+
+
+
+	</div>
 	<div class="col s7 center align">Skills
 		<div class="row">
 			<div class="col s2">Skill Names</div>
