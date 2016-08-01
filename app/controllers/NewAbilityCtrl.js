@@ -11,10 +11,11 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 	};
 
 	$scope.newAbility = {
-		strength : "",
-		dexterity : "",
-		constitution : "",
-		intelligence : "",
-		wisdom : ""
+		STR : "",
+		DEX : "",
+		CON : "",
+		INT : "",
+		WIS : "",
+		CHA : ""
 	};
 });

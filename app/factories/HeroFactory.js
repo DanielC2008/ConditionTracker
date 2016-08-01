@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
-	let heroKey = ["-KNxlW-XapQ4J1EfFst8"];
+	let heroKey = ["-KO2Xsc4PP0ja-ku_G2i"];
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
 		return $q(function(resolve, reject) {
