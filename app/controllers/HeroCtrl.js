@@ -20,6 +20,9 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 	.then(function(currMettle) {
 		$scope.mettle = currMettle;
 		$scope.mettle.currHealth =$scope.mettle.healthPoints;
+		$scope.tempFortMod = 0;
+		$scope.tempRefMod = 0;
+		$scope.tempWillMod = 0;
 		$location.url("#/tracker/hero");
 	})
 
@@ -53,13 +56,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 	$scope.add = function(a, b) {
 		return parseInt(a) + parseInt(b);
 	};
-
-	// $scope.mod = function(value, tempMod) {
-	// 	if (!tempMod) {
-	// 		tempMod = 0;
-	// 	}
-	// 	return (Math.floor(value / 2) - 5) + parseInt(tempMod);
-	// };
 
 	$scope.applyChange = function(change) {
 		$scope.mettle.currHealth = parseInt($scope.mettle.currHealth) - parseInt(change); 
@@ -97,6 +93,45 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
 						parseInt($scope.DEX);
+	};
+
+	$scope.getFort = function() {
+		let fortMod = $scope.tempFortMod;
+		if (fortMod === ""){
+			fortMod = 0;
+		}
+		return  parseInt($scope.mettle.baseFort) +
+						parseInt($scope.mettle.magicFort) +
+						parseInt($scope.mettle.MMFort) +
+						parseInt($scope.CON) +
+						parseInt(fortMod);
+
+
+	};
+
+	$scope.getRef = function() {
+		let refMod = $scope.tempRefMod;
+		if (refMod === ""){
+			refMod = 0;
+		}
+		return	parseInt($scope.mettle.baseRef) +
+						parseInt($scope.mettle.magicRef) +
+						parseInt($scope.mettle.MMRef) +
+						parseInt($scope.DEX) +
+						parseInt(refMod);
+
+	};
+
+	$scope.getWill = function() {
+		let willMod = $scope.tempWillMod;
+		if (willMod === ""){
+			willMod = 0;
+		}
+		return  parseInt($scope.mettle.baseWill) +
+						parseInt($scope.mettle.magicWill) +
+						parseInt($scope.mettle.MMWill) +
+						parseInt($scope.WIS) +
+						parseInt(willMod);
 	};
 
 

@@ -11,50 +11,88 @@
 	<div class="col s9">
 		<div class="row">
 			<div class="col s4">Character Name: {{hero.characterName}}</div>
-			<div class="col s4">Alignment: {{hero.alignment}}</div>
-			<div class="col s4">Level: {{hero.level}}</div>
+			<div class="col s2">Level: {{hero.level}}</div>
+			<div class="col s2">Race: {{hero.race}}</div>
+
 		</div>
 		<div class="row">
 			<div class="col s4">Diety: {{hero.diety}}</div>
+			<div class="col s2">Gender: {{hero.gender}}</div>
+			<div class="col s2">Age: {{hero.age}}</div>
+			<div class="col s2">Eyes: {{hero.eyes}}</div>
+
+		</div>
+		<div class="row">
 			<div class="col s4">Homeland: {{hero.homeland}}</div>
-			<div class="col s4">Race: {{hero.race}}</div>
-		</div>
-		<div class="row">
-			<div class="col s4">Size:{{hero.size}}</div>
-			<div class="col s4">Gender: {{hero.gender}}</div>
-			<div class="col s4">Age: {{hero.age}}</div>
-		</div>
-		<div class="row">
+			<div class="col s2">Size: {{hero.size}}</div>
 			<div class="col s2">Height: {{hero.height}}</div>
-			<div class="col s2">Weight: {{hero.weight}}</div>
-			<div class="col s4">Hair: {{hero.hair}}</div>
-			<div class="col s4">Eyes: {{hero.eyes}}</div>
+			<div class="col s2">Speed: {{mettle.speed}} ft.</div>
 		</div>
 		<div class="row">
-			<div class="col s6">
-				<div class="col s12">Current HP: {{mettle.currHealth}}</div>
-				<input class="col s5" placeholder="Damage..." ng-model="healthChange" ng-keyup="$event.keyCode == 13 && applyChange(healthChange)"/>
-				<div class="col s12">Total HP: {{mettle.healthPoints}}</div>
-				<div class="col s12">DR: {{mettle.damageReduction}}</div>
-			</div>
+			<div class="col s4">Alignment: {{hero.alignment}}</div>
+			<div class="col s2">Weight: {{hero.weight}}</div>
+			<div class="col s2">Hair: {{hero.hair}}</div>
 			<div class="col s4">
 				<div class="col s12">Initiative: {{add(DEX, mettle.MMinitiation)}}</div>
 				<div class="col s12" >Dex: {{DEX}}</div>
 				<div class="col s12">Init Modifiers: {{mettle.MMinitiation}}</div>
 			</div>
-			<div class="col s2">
-				<div class="col s2">Speed:{{hero.speed}}</div>
-			</div>	
+		</div>
+		<div class="row">
+			<div class="col s3">
+				<div class="col s12">Current HP: {{mettle.currHealth}}</div>
+				<input class="col s12" placeholder="Damage..." ng-model="healthChange" ng-keyup="$event.keyCode == 13 && applyChange(healthChange)"/>
+				<div class="col s12">Total HP: {{mettle.healthPoints}}</div>
+				<div class="col s12">DR: {{mettle.damageReduction}}</div>
+			</div>
+			<div class="col s9">				
+				<div class="row">
+					<div class="col s2 center align">Saving Throw</div>
+					<div class="col s2 center align">Total</div>
+					<div class="col s2 center align">Base</div>
+					<div class="col s2 center align">Modifier</div>
+					<div class="col s2 center align">Magic Mod</div>
+					<div class="col s1 center align">Misc. Mod</div>
+					<div class="col s1 center align">Temp Mod</div>
+				</div>
+				<div class="row">
+					<div class="col s2 center align">Fortitude</div>
+					<div class="col s2 center align" ng-if="mettle" ng-bind="getFort()"></div>
+					<div class="col s2 center align">{{mettle.baseFort}}</div>
+					<div class="col s2 center align">CON: {{CON}}</div>
+					<div class="col s2 center align">{{mettle.magicFort}}</div>
+					<div class="col s1 center align">{{mettle.MMFort}}</div>
+					<input class="col s1" ng-model="tempFortMod">
+				</div>
+				<div class="row">
+					<div class="col s2 center align">Reflex</div>
+					<div class="col s2 center align" ng-if="mettle" ng-bind="getRef()">Total</div>
+					<div class="col s2 center align">{{mettle.baseRef}}</div>
+					<div class="col s2 center align">DEX: {{DEX}}</div>
+					<div class="col s2 center align">{{mettle.magicRef}}</div>
+					<div class="col s1 center align">{{mettle.MMRef}}</div>
+					<input class="col s1" ng-model="tempRefMod">
+				</div>
+				<div class="row">
+					<div class="col s2 center align">Will</div>
+					<div class="col s2 center align" ng-if="mettle" ng-bind="getWill()">Total</div>
+					<div class="col s2 center align">{{mettle.baseWill}}</div>
+					<div class="col s2 center align">WIS: {{WIS}}</div>
+					<div class="col s2 center align">{{mettle.magicWill}}</div>
+					<div class="col s1 center align">{{mettle.MMWill}}</div>
+					<input class="col s1" ng-model="tempWillMod">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col s5">
+	<div class="col s4">
 		<div class="row">
 			<div class="col s3">Ability Name</div>
 			<div class="col s3">Ability Score</div>
 			<div class="col s3">Ability Mod</div>
-			<div class="col s3">Temp Mod</div>
+			<div class="col s2">Temp Mod</div>
 		</div>
 		<div ng-repeat="ability in abilities track by $index">
 			<div ng-repeat="(key, value) in ability" ng-hide="key === 'heroKey' || key === 'uid'">
@@ -62,7 +100,7 @@
 					<div class="col s3 center align">{{key}}</div>
 					<div class="col s3 center align">{{value}}</div>
 					<div class="col s3 center align" ng-bind="{{key}}"></div>
-					<input class="col s3 center align" ng-model="temp" ng-keyup="$event.keyCode == 13 && tempMod(key, temp)"/>
+					<input class="col s2 center align" ng-model="temp" ng-keyup="$event.keyCode == 13 && tempMod(key, temp)"/>
 				</div>		
 			</div>
 		</div>
@@ -70,25 +108,26 @@
 
 
 	</div>
-	<div class="col s7 center align">
+	<div class="col s8 center align">
 		<div class="row">
-			<div class="col s3 left-align">Armor Class</div>
-			<div class="col s1 center align">Armor</div>
-			<div class="col s1 center align">Shield</div>
+			<div class="col s1 center align">Armor Class</div>
+			<div class="col s1"></div>
+			<div class="col s1 center align">Armor Bonus</div>
+			<div class="col s1 center align">Shield Bonus</div>
 			<div class="col s1 center align">DEX</div>
-			<div class="col s1 center align">Size</div>
-			<div class="col s2 center align">Natural Armor</div>
-			<div class="col s2 center align">Deflection</div>
+			<div class="col s1 center align">Size Mod</div>
+			<div class="col s1 center align">Natural Armor</div>
+			<div class="col s2 center align">Deflection Bonus</div>
 			<div class="col s1 center align">Misc Mod</div>
 		</div>
 		<div class="row">
 			<div class="col s1 center align" ng-if="mettle" ng-bind="getAC()"></div>
-			<div class="col s2 center align">= 10</div>
+			<div class="col s1 center align">= 10</div>
 			<div class="col s1 center align">{{mettle.armorBonus}}</div>
 			<div class="col s1 center align">{{mettle.shieldBonus}}</div>
 			<div class="col s1 center align">{{DEX}}</div>
 			<div class="col s1 center align">{{mettle.sizeMod}}</div>
-			<div class="col s2 center align">{{mettle.naturalArmor}}</div>
+			<div class="col s1 center align">{{mettle.naturalArmor}}</div>
 			<div class="col s2 center align">{{mettle.deflectionMod}}</div>
 			<div class="col s1 center align">{{mettle.MMArmor}}</div>			
 		</div>
