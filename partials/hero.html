@@ -32,8 +32,8 @@
 		</div>
 		<div class="row">
 			<div class="col s6">
-				<div class="col s12">Current HP: CUR</div>
-				<input class="col s5" placeholder="Damage...">
+				<div class="col s12">Current HP: {{hero.currHealth}}</div>
+				<input class="col s5" placeholder="Damage..." ng-model="healthChange" ng-keyup="$event.keyCode == 13 && applyChange(healthChange)"/>
 				<div class="col s12">Total HP: {{hero.healthPoints}}</div>
 				<div class="col s12">DR: {{hero.damageReduction}}</div>
 			</div>

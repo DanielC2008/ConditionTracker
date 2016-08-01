@@ -3,13 +3,13 @@
 app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 
 	let key = HeroFactory.getHeroKey();	
-	let conMod = "";
 
 
 
 	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		$scope.hero = currHero;
+		$scope.hero.currHealth =$scope.hero.healthPoints;
 	})
 	.then(function(){
 		HeroFactory.getAbility(key)
@@ -49,7 +49,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		})
 	}
 
-	$scope.add = function(a,b) {
+	$scope.add = function(a, b) {
 		return parseInt(a) + parseInt(b);
 	}
 
@@ -58,6 +58,12 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 			tempMod = 0;
 		}
 		return (Math.floor(value / 2) - 5) + parseInt(tempMod);
+	}
+
+	$scope.applyChange = function(change) {
+		$scope.hero.currHealth = parseInt($scope.hero.currHealth) - parseInt(change); 
+		$scope.healthChange = null;
+
 	}
 
 
