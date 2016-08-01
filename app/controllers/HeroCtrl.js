@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
+app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 
 	let key = HeroFactory.getHeroKey();	
 
@@ -9,21 +9,18 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	.then(function(currHero) {
 		$scope.hero = currHero;
 	})
-	.then(function(){
-		HeroFactory.getAbility(key)
-		.then(function(currAbility){
-			$scope.getMod(currAbility);
-			$scope.abilities = currAbility;
-		})
+
+	HeroFactory.getAbility(key)
+	.then(function(currAbility){
+		$scope.getMod(currAbility);
+		$scope.abilities = currAbility;
 	})
-	.then(function() {
-		HeroFactory.getMettle(key)
-		.then(function(currMettle) {
+	
+	HeroFactory.getMettle(key)
+	.then(function(currMettle) {
 		$scope.mettle = currMettle;
-		$scope.armorClass = $scope.getAC();
 		$scope.mettle.currHealth =$scope.mettle.healthPoints;
 		$location.url("#/tracker/hero");
-		})
 	})
 
 
@@ -100,6 +97,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
 						parseInt($scope.DEX);
-	}
+	};
+
 
 });

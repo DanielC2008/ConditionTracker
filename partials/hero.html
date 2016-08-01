@@ -82,7 +82,7 @@
 			<div class="col s1 center align">Misc Mod</div>
 		</div>
 		<div class="row">
-			<div class="col s1 center align" ng-bind="armorClass"></div>
+			<div class="col s1 center align" ng-if="mettle" ng-bind="getAC()"></div>
 			<div class="col s2 center align">= 10</div>
 			<div class="col s1 center align">{{mettle.armorBonus}}</div>
 			<div class="col s1 center align">{{mettle.shieldBonus}}</div>
