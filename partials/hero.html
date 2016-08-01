@@ -66,34 +66,36 @@
 				</div>		
 			</div>
 		</div>
-		<div class="row">
-			<div class="col s1">AC</div>
-			<div class="col s1"></div>
-			<div class="col s1">Armor</div>
-			<div class="col s1">Shield</div>
-			<div class="col s1">DEX</div>
-			<div class="col s1">Size</div>
-			<div class="col s2">Natural Armor</div>
-			<div class="col s2">Deflection</div>
-			<div class="col s1">Misc Mod</div>
-		</div>
-		<div>
-			<div class="col s1" ng-bind="armorClass"></div>
-			<div class="col s1"> = 10 +</div>
-			<div class="col s1">{{mettle.armorBonus}}</div>
-			<div class="col s1">{{mettle.shieldBonus}}</div>
-			<div class="col s1">{{DEX}}</div>
-			<div class="col s1">{{mettle.sizeMod}}</div>
-			<div class="col s1">{{mettle.naturalArmor}}</div>
-			<div class="col s1">{{mettle.deflectionMod}}</div>
-			<div class="col s1">{{mettle.MMArmor}}</div>			
-		</div>
 
 
 
 	</div>
-	<div class="col s7 center align">Skills
+	<div class="col s7 center align">
 		<div class="row">
+			<div class="col s3 left-align">Armor Class</div>
+			<div class="col s1 center align">Armor</div>
+			<div class="col s1 center align">Shield</div>
+			<div class="col s1 center align">DEX</div>
+			<div class="col s1 center align">Size</div>
+			<div class="col s2 center align">Natural Armor</div>
+			<div class="col s2 center align">Deflection</div>
+			<div class="col s1 center align">Misc Mod</div>
+		</div>
+		<div class="row">
+			<div class="col s1 center align" ng-bind="armorClass"></div>
+			<div class="col s2 center align">= 10</div>
+			<div class="col s1 center align">{{mettle.armorBonus}}</div>
+			<div class="col s1 center align">{{mettle.shieldBonus}}</div>
+			<div class="col s1 center align">{{DEX}}</div>
+			<div class="col s1 center align">{{mettle.sizeMod}}</div>
+			<div class="col s2 center align">{{mettle.naturalArmor}}</div>
+			<div class="col s2 center align">{{mettle.deflectionMod}}</div>
+			<div class="col s1 center align">{{mettle.MMArmor}}</div>			
+		</div>
+		<div class="row">
+			<div class="col s12 center align"> Skills</div>
+		</div>
+		<div class="row">	
 			<div class="col s2">Skill Names</div>
 			<div class="col s2">Total Bonus</div>
 			<div class="col s2">Ability Type</div>

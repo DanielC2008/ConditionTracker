@@ -20,14 +20,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		HeroFactory.getMettle(key)
 		.then(function(currMettle) {
 		$scope.mettle = currMettle;
-		$scope.armorClass = 10 +
-												parseInt($scope.mettle.armorBonus) +
-												parseInt($scope.mettle.shieldBonus) +
-												parseInt($scope.mettle.sizeMod) +
-												parseInt($scope.mettle.naturalArmor) +
-												parseInt($scope.mettle.deflectionMod) +
-												parseInt($scope.mettle.MMArmor) +
-												parseInt($scope.DEX);
+		$scope.armorClass = $scope.getAC();
 		$scope.mettle.currHealth =$scope.mettle.healthPoints;
 		$location.url("#/tracker/hero");
 		})
@@ -97,5 +90,16 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		}
 	}
 
+
+	$scope.getAC = function() {
+		return  10 +
+						parseInt($scope.mettle.armorBonus) +
+						parseInt($scope.mettle.shieldBonus) +
+						parseInt($scope.mettle.sizeMod) +
+						parseInt($scope.mettle.naturalArmor) +
+						parseInt($scope.mettle.deflectionMod) +
+						parseInt($scope.mettle.MMArmor) +
+						parseInt($scope.DEX);
+	}
 
 });
