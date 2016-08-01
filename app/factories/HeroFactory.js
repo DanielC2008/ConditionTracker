@@ -80,8 +80,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const getMettle = function(key) {
-		console.log(key);
-		// let abilities = [];
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/mettle.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroMet) {
@@ -89,12 +87,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 					let mettle = heroMet[obj];
 					resolve(mettle);
 				}
-					// Object.keys(heroAbl[obj]).forEach(function(curr, index) {
-					// 	let currObj = {};
-					// 	currObj[`${curr}`] = heroAbl[obj][curr];
-					// 	abilities.push(currObj);
-					// })
-				// }
 			})
 			.error(function(error) {
 				reject(error);

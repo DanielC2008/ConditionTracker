@@ -5,7 +5,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	let key = HeroFactory.getHeroKey();	
 
 
-
 	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		$scope.hero = currHero;
@@ -20,7 +19,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	.then(function() {
 		HeroFactory.getMettle(key)
 		.then(function(currMettle) {
-		console.log(currMettle);	
 		$scope.mettle = currMettle;
 		$scope.mettle.currHealth =$scope.mettle.healthPoints;
 		$location.url("#/tracker/hero");
