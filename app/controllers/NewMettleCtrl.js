@@ -3,6 +3,11 @@
 app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $location) {
 
 	$scope.addNewMettle = function() {
+		for (let item in $scope.newMettle) {
+			if ($scope.newMettle[item] === null) {
+			$scope.newMettle[item] = 0;
+			}
+		}
 		$scope.newMettle.uid = AuthFactory.getUser();
 		HeroFactory.postNewMettle($scope.newMettle)
 		.then(function() {
@@ -11,29 +16,29 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 	};
 
 	$scope.newMettle = {
-		healthPoints : "",
-		damageReduction : "",
-		MMinitiation : "",
-		armorBonus : "",
-		shieldBonus : "",
-		sizeMod : "",
-		naturalArmor : "",
-		deflectionMod : "",
-		MMArmor : "",
-		baseFort : "",
-		magicFort : "",
-		MMFort : "",
-		baseRef : "",
-		magicRef : "",
-		MMRef : "",
-		baseWill : "",
-		magicWill : "",
-		MMWill : "",
-		baseAttackBonus : "",
-		spellResistance : "",
-		MMCMB : "",
-		MMCMD : "",
-		speed : "",
+		healthPoints : null,
+		damageReduction : null,
+		MMinitiation : null,
+		armorBonus : null,
+		shieldBonus : null,
+		sizeMod : null,
+		naturalArmor : null,
+		deflectionMod : null,
+		MMArmor : null,
+		baseFort : null,
+		magicFort : null,
+		MMFort : null,
+		baseRef : null,
+		magicRef : null,
+		MMRef : null,
+		baseWill : null,
+		magicWill : null,
+		MMWill : null,
+		baseAttackBonus : null,
+		spellResistance : null,
+		MMCMB : null,
+		MMCMD : null,
+		speed : null,
 		dodge : false
 	};
 

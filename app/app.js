@@ -28,6 +28,10 @@ when("/tracker/newMettle", {
 	templateUrl: "partials/new-mettle.html",
 	controller: "NewMettleCtrl"
 }).
+when("/tracker/newSkill", {
+	templateUrl: "partials/new-skill.html",
+	controller: "NewSkillCtrl"
+}).
 when("/tracker/hero", {
 	templateUrl: "partials/hero.html",
 	controller: "HeroCtrl"
