@@ -17,7 +17,6 @@
 			<input class="col s4" ng-model="tempCMB">
 			<div class="col s8" ng-if="mettle">CMD: {{getCMD()}}</div>
 			<input class="col s4" ng-model="tempCMD">
-
 		</div>
 	</div>
 	</div>			
@@ -32,7 +31,6 @@
 			<div class="col s2">Gender: {{hero.gender}}</div>
 			<div class="col s2">Age: {{hero.age}}</div>
 			<div class="col s2">Eyes: {{hero.eyes}}</div>
-
 		</div>
 		<div class="row">
 			<div class="col s4">Homeland: {{hero.homeland}}</div>
@@ -158,13 +156,13 @@
 			<div class="col s2">Misc. Mod</div>
 		</div>
 		<div class="row">
-
-			
+			<div class="col s2">Acrobatics</div>
+			<div class="col s2">{{skillTotal(DEX, skill.acrobaticsRanks, skill.acrobaticsMM)}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.acrobaticsRanks}}</div>
+			<div class="col s2">{{skill.acrobaticsMM}}</div>
 		</div>
-
-
-
-
 	</div>
 </div>
 
