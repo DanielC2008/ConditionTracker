@@ -12,19 +12,30 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 
 	HeroFactory.getAbility(key)
 	.then(function(currAbility){
-		$scope.getMod(currAbility);
 		$scope.abilities = currAbility;
+		$scope.tempCHA = "";
+		$scope.tempCON = "";
+		$scope.tempDEX = "";
+		$scope.tempINT = "";
+		$scope.tempSTR = "";
+		$scope.tempWIS = "";
+		$scope.CHA;
+		$scope.CON;
+		$scope.DEX;
+		$scope.INT;
+		$scope.STR;
+		$scope.WIS;
 	})
 	
 	HeroFactory.getMettle(key)
 	.then(function(currMettle) {
 		$scope.mettle = currMettle;
 		$scope.mettle.currHealth =$scope.mettle.healthPoints;
-		$scope.tempFortMod = 0;
-		$scope.tempRefMod = 0;
-		$scope.tempWillMod = 0;
-		$scope.tempCMB = 0;
-		$scope.tempCMD = 0;
+		$scope.tempFortMod = "";
+		$scope.tempRefMod = "";
+		$scope.tempWillMod = "";
+		$scope.tempCMB = "";
+		$scope.tempCMD = "";
 		if ($scope.mettle.dodge){
 			$scope.mettle.dodgeBonus = 1 ;
 		}
@@ -37,30 +48,34 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 	})
 
 
-	$scope.getMod = function(abilities) {
-		abilities.splice(6,2);
-		abilities.forEach(function(currObj, index) {
-			for (let ability in currObj) {
-				if (index === 0) {
-					$scope.CHA   = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-				if (index === 1) {
-					$scope.CON  = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-				if (index === 2) {
-					$scope.DEX  = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-				if (index === 3) {
-					$scope.INT  = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-				if (index === 4) {
-					$scope.STR  = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-				if (index === 5) {
-					$scope.WIS  = Math.floor(parseInt(currObj[ability])/2) -5;
-				}
-			}
-		});
+	$scope.getMod = function(which, abl, temp) {
+		if (temp === "") {
+			temp = 0;
+		};
+		if (which === "CHA") {
+			$scope.CHA   = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.CHA;
+		}
+		if (which === "CON") {
+			$scope.CON  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.CON;
+		}
+		if (which === "DEX") {
+			$scope.DEX  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.DEX;
+		}
+		if (which === "INT") {
+			$scope.INT  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.INT;
+		}
+		if (which === "STR") {
+			$scope.STR  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.STR;		
+		}
+		if (which === "WIS") {
+			$scope.WIS  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			return $scope.WIS;
+		}
 	};
 
 	$scope.add = function(a, b) {
@@ -71,28 +86,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 		$scope.mettle.currHealth = parseInt($scope.mettle.currHealth) - parseInt(change); 
 		$scope.healthChange = null;
 	};
-
-	$scope.tempMod = function(key, temp) {
-		console.log(temp);
-			if (key == 'CHA') {
-				$scope.CHA = parseInt($scope.CHA) + parseInt(temp);
-			}
-			if (key == 'CON') {
-				$scope.CON = parseInt($scope.CON) + parseInt(temp);
-			}
-			if (key == 'DEX') {
-				$scope.DEX = parseInt($scope.DEX) + parseInt(temp);
-			}
-			if (key == 'INT') {
-				$scope.INT = parseInt($scope.INT) + parseInt(temp);
-			}
-			if (key == 'STR') {
-				$scope.STR = parseInt($scope.STR) + parseInt(temp);
-			}
-			if (key == 'WIS') {
-				$scope.WIS = parseInt($scope.WIS) + parseInt(temp);
-			}
-	}
 
 // ARMOR CLASS//////////////////////
 	$scope.getAC = function() {

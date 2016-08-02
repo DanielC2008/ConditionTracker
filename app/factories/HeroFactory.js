@@ -74,18 +74,13 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const getAbility = function(key) {
-		let abilities = [];
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/abilities.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroAbl) {
 				for (let obj in heroAbl) {
-					Object.keys(heroAbl[obj]).forEach(function(curr) {
-						let currObj = {};
-						currObj[`${curr}`] = heroAbl[obj][curr];
-						abilities.push(currObj);
-					});
-				}
-				resolve(abilities);
+					let abilities = heroAbl[obj];
+					resolve(abilities);
+				};
 			})
 			.error(function(error) {
 				reject(error);

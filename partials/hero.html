@@ -76,7 +76,7 @@
 				</div>
 				<div class="row">
 					<div class="col s2 center align">Reflex</div>
-					<div class="col s2 center align" ng-if="mettle" ng-bind="getRef()">Total</div>
+					<div class="col s2 center align" ng-if="mettle" ng-bind="getRef()"></div>
 					<div class="col s2 center align">{{mettle.baseRef}}</div>
 					<div class="col s2 center align">DEX: {{DEX}}</div>
 					<div class="col s2 center align">{{mettle.magicRef}}</div>
@@ -85,7 +85,7 @@
 				</div>
 				<div class="row">
 					<div class="col s2 center align">Will</div>
-					<div class="col s2 center align" ng-if="mettle" ng-bind="getWill()">Total</div>
+					<div class="col s2 center align" ng-if="mettle" ng-bind="getWill()"></div>
 					<div class="col s2 center align">{{mettle.baseWill}}</div>
 					<div class="col s2 center align">WIS: {{WIS}}</div>
 					<div class="col s2 center align">{{mettle.magicWill}}</div>
@@ -105,7 +105,44 @@
 			<div class="col s3">Ability Mod</div>
 			<div class="col s2">Temp Mod</div>
 		</div>
-		<div ng-repeat="ability in abilities track by $index">
+		<div class="row">
+			<div class="col s3">CHA</div>
+			<div class="col s3">{{abilities.CHA}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('CHA', abilities.CHA, tempCHA)}}</div>
+			<input class="col s3" ng-model="tempCHA">
+		</div>
+		<div class="row">
+			<div class="col s3">CON</div>
+			<div class="col s3">{{abilities.CON}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('CON', abilities.CON, tempCON)}}</div>
+			<input class="col s3" ng-model="tempCON">
+		</div>
+		<div class="row">
+			<div class="col s3">DEX</div>
+			<div class="col s3">{{abilities.DEX}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('DEX', abilities.DEX, tempDEX)}}</div>
+			<input class="col s3" ng-model="tempDEX">
+		</div>
+		<div class="row">
+			<div class="col s3">INT</div>
+			<div class="col s3">{{abilities.INT}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('INT', abilities.INT, tempINT)}}</div>
+			<input class="col s3" ng-model="tempINT">
+		</div>
+		<div class="row">
+			<div class="col s3">STR</div>
+			<div class="col s3">{{abilities.STR}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('STR', abilities.STR, tempSTR)}}</div>
+			<input class="col s3" ng-model="tempSTR">
+		</div>
+		<div class="row">
+			<div class="col s3">WIS</div>
+			<div class="col s3">{{abilities.WIS}}</div>
+			<div class="col s3" ng-if="abilities">{{getMod('WIS', abilities.WIS, tempWIS)}}</div>
+			<input class="col s3" ng-model="tempWIS">
+		</div>
+
+<!-- 		<div ng-repeat="ability in abilities track by $index">
 			<div ng-repeat="(key, value) in ability" ng-hide="key === 'heroKey' || key === 'uid'">
 				<div class="row">
 					<div class="col s3 center align">{{key}}</div>
@@ -114,7 +151,7 @@
 					<input class="col s2 center align" ng-model="temp" ng-keyup="$event.keyCode == 13 && tempMod(key, temp)"/>
 				</div>		
 			</div>
-		</div>
+		</div> -->
 
 
 
