@@ -68,8 +68,8 @@
 		</div>	
 		<div class="row">
 			<div class="newInput col s2"><input id="heal" type="checkbox" ng-model="newSkill.heal"/><label for="heal">Heal</label></div>	
-			<div class="newInput col s3">Ranks<input ng-model="newSkill.healRanks" ng-disabled="!newSkill.healRanks"></div>
-			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.healMM" ng-disabled="!newSkill.healRanks"></div>
+			<div class="newInput col s3">Ranks<input ng-model="newSkill.healRanks" ng-disabled="!newSkill.heal"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.healMM" ng-disabled="!newSkill.heal"></div>
 		</div>	
 		<div class="row">
 			<div class="newInput col s2"><input id="intimidate" type="checkbox" ng-model="newSkill.intimidate"/><label for="intimidate">Intimidate</label></div>	
@@ -85,6 +85,11 @@
 			<div class="newInput col s2"><input id="knowDungeon" type="checkbox" ng-model="newSkill.knowDungeon"/><label for="knowDungeon">Knowledge Dungeoneering</label></div>	
 			<div class="newInput col s3">Ranks<input ng-model="newSkill.knowDungeonRanks" ng-disabled="!newSkill.knowDungeon"></div>
 			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.knowDungeonMM" ng-disabled="!newSkill.knowDungeon"></div>
+		</div>	
+		<div class="row">
+			<div class="newInput col s2"><input id="knowEngin" type="checkbox" ng-model="newSkill.knowEngin"/><label for="knowEngin">Knowledge Engineering</label></div>	
+			<div class="newInput col s3">Ranks<input ng-model="newSkill.knowEnginRanks" ng-disabled="!newSkill.knowEngin"></div>
+			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.knowEnginMM" ng-disabled="!newSkill.knowEngin"></div>
 		</div>	
 		<div class="row">
 			<div class="newInput col s2"><input id="knowGeography" type="checkbox" ng-model="newSkill.knowGeography"/><label for="knowGeography">Knowledge Geography</label></div>	
@@ -163,7 +168,7 @@
 		</div>	
 		<div class="row">
 			<div class="newInput col s2"><input id="sleightOfHand" type="checkbox" ng-model="newSkill.sleightOfHand"/><label for="sleightOfHand">Sleight Of Hand</label></div>	
-			<div class="newInput col s3">Ranks<input ng-stealth="newSkill.sleightOfHandRanks" ng-disabled="!newSkill.sleightOfHand"></div>
+			<div class="newInput col s3">Ranks<input ng-model="newSkill.sleightOfHandRanks" ng-disabled="!newSkill.sleightOfHand"></div>
 			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.sleightOfHandMM" ng-disabled="!newSkill.sleightOfHand"></div>
 		</div>	
 		<div class="row">
