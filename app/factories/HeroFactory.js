@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
-	let heroKey = ["-KO6hB-uNIftFO7-en1t"];
+	let heroKey = ["-KOB_yW1zIPfxG31_nB4"];
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
 		return $q(function(resolve, reject) {
@@ -36,6 +36,20 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/mettle.json`, 
 			JSON.stringify(newMettle))
+			.success(function() {
+				resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const postNewSkill = function(newSkill) {
+		newSkill.heroKey = heroKey[0];
+		return $q(function(resolve, reject) {
+			$http.post(`${FirebaseURL}/skill.json`, 
+			JSON.stringify(newSkill))
 			.success(function() {
 				resolve();
 			})
@@ -94,6 +108,21 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		});
 	};
 
+	const getSkill = function(key) {
+		return $q(function(resolve, reject) {
+			$http.get(`${FirebaseURL}/skill.json?orderBy="heroKey"&equalTo="${key}"`)
+			.success(function(heroSkill) {
+				for (let obj in heroSkill) {
+					let skill = heroSkill[obj];
+					resolve(skill);
+				}
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
 	const getHeroKey = function() {
 		return heroKey[0];
 	};
@@ -103,5 +132,5 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	// };
 
 
-	return {postNewHero, postNewAbility, postNewMettle, getHero, getHeroKey, getAbility, getMettle};
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill};
 });

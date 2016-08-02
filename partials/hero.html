@@ -17,7 +17,6 @@
 			<input class="col s4" ng-model="tempCMB">
 			<div class="col s8" ng-if="mettle">CMD: {{getCMD()}}</div>
 			<input class="col s4" ng-model="tempCMD">
-
 		</div>
 	</div>
 	</div>			
@@ -32,7 +31,6 @@
 			<div class="col s2">Gender: {{hero.gender}}</div>
 			<div class="col s2">Age: {{hero.age}}</div>
 			<div class="col s2">Eyes: {{hero.eyes}}</div>
-
 		</div>
 		<div class="row">
 			<div class="col s4">Homeland: {{hero.homeland}}</div>
@@ -158,13 +156,317 @@
 			<div class="col s2">Misc. Mod</div>
 		</div>
 		<div class="row">
-
-			
+			<div class="col s2">Acrobatics</div>
+			<div class="col s2">{{skill.acrobatics ? skillTotal(DEX, skill.acrobaticsRanks, skill.acrobaticsMM): "" }}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.acrobaticsRanks}}</div>
+			<div class="col s2">{{skill.acrobaticsMM}}</div>
 		</div>
-
-
-
-
+		<div class="row">
+			<div class="col s2">Appraise</div>
+			<div class="col s2">{{skill.appraise ? skillTotal(INT, skill.appraiseRanks, skill.appraiseMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.appraiseRanks}}</div>
+			<div class="col s2">{{skill.appraiseMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Bluff</div>
+			<div class="col s2">{{skill.bluff ? skillTotal(CHA, skill.bluffRanks, skill.bluffMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.bluffRanks}}</div>
+			<div class="col s2">{{skill.bluffMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Climb</div>
+			<div class="col s2">{{skill.climb ? skillTotal(STR, skill.climbRanks, skill.climbMM) : ""}}</div>
+			<div class="col s2">=STR</div>
+			<div class="col s2">{{STR}}</div>
+			<div class="col s2">{{skill.climbRanks}}</div>
+			<div class="col s2">{{skill.climbMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Craft: {{CraftType1}}</div>
+			<div class="col s2">{{skill.craft1 ? skillTotal(INT, skill.craft1TypeRanks, skill.craft1TypeMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.craft1TypeRanks}}</div>
+			<div class="col s2">{{skill.craft1TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Craft: {{CraftType2}}</div>
+			<div class="col s2">{{skill.craft2 ? skillTotal(INT, skill.craft2TypeRanks, skill.craft2TypeMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.craft2TypeRanks}}</div>
+			<div class="col s2">{{skill.craft2TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Craft: {{CraftType3}}</div>
+			<div class="col s2">{{skill.craft3 ? skillTotal(INT, skill.craft3TypeRanks, skill.craft3TypeMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.craft3TypeRanks}}</div>
+			<div class="col s2">{{skill.craft3TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Diplomacy</div>
+			<div class="col s2">{{skill.diplomacy ? skillTotal(CHA, skill.diplomacyRanks, skill.diplomacyMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.diplomacyRanks}}</div>
+			<div class="col s2">{{skill.diplomacyMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Disable Device</div>
+			<div class="col s2">{{skill.disableDevice ? skillTotal(DEX, skill.disableDeviceRanks, skill.disableDeviceMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.disableDeviceRanks}}</div>
+			<div class="col s2">{{skill.disableDeviceMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Disguise</div>
+			<div class="col s2">{{skill.disguise ? skillTotal(CHA, skill.disguiseRanks, skill.disguiseMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.disguiseRanks}}</div>
+			<div class="col s2">{{skill.disguiseMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Escape Artist</div>
+			<div class="col s2">{{skill.escapeArtist ? skillTotal(DEX, skill.escapeArtistRanks, skill.escapeArtistMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.escapeArtistRanks}}</div>
+			<div class="col s2">{{skill.escapeArtistMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Fly</div>
+			<div class="col s2">{{skill.fly ? skillTotal(DEX, skill.flyRanks, skill.flyMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.flyRanks}}</div>
+			<div class="col s2">{{skill.flyMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Handle Animal</div>
+			<div class="col s2">{{skill.handleAnimal ? skillTotal(CHA, skill.handleAnimalRanks, skill.handleAnimalMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.handleAnimalRanks}}</div>
+			<div class="col s2">{{skill.handleAnimalMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Heal</div>
+			<div class="col s2">{{skill.heal ? skillTotal(WIS, skill.healRanks, skill.healMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.healRanks}}</div>
+			<div class="col s2">{{skill.healMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Intimidate</div>
+			<div class="col s2">{{skill.intimidate ? skillTotal(CHA, skill.intimidateRanks, skill.intimidateMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.intimidateRanks}}</div>
+			<div class="col s2">{{skill.intimidateMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Arcana</div>
+			<div class="col s2">{{skill.knowArcana ? skillTotal(INT, skill.knowArcanaRanks, skill.knowArcanaMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowArcanaRanks}}</div>
+			<div class="col s2">{{skill.knowArcanaMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Dungeoneering</div>
+			<div class="col s2">{{skill.knowDungeon ? skillTotal(INT, skill.knowDungeonRanks, skill.knowDungeonMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowDungeonRanks}}</div>
+			<div class="col s2">{{skill.knowDungeonMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Engineering</div>
+			<div class="col s2">{{skill.knowEngin ? skillTotal(INT, skill.knowEnginRanks, skill.knowEnginMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowEnginRanks}}</div>
+			<div class="col s2">{{skill.knowEnginMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Geography</div>
+			<div class="col s2">{{skill.knowGeography ? skillTotal(INT, skill.knowGeographyRanks, skill.knowGeographyMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowGeographyRanks}}</div>
+			<div class="col s2">{{skill.knowGeographyMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge History</div>
+			<div class="col s2">{{skill.knowHistory ? skillTotal(INT, skill.knowHistoryRanks, skill.knowHistoryMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowHistoryRanks}}</div>
+			<div class="col s2">{{skill.knowHistoryMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Local</div>
+			<div class="col s2">{{skill.knowLocal ? skillTotal(INT, skill.knowLocalRanks, skill.knowLocalMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowLocalRanks}}</div>
+			<div class="col s2">{{skill.knowLocalMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Nature</div>
+			<div class="col s2">{{skill.knowNature ? skillTotal(INT, skill.knowNatureRanks, skill.knowNatureMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowNatureRanks}}</div>
+			<div class="col s2">{{skill.knowNatureMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Nobility</div>
+			<div class="col s2">{{skill.knowNobility ? skillTotal(INT, skill.knowNobilityRanks, skill.knowNobilityMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowNobilityRanks}}</div>
+			<div class="col s2">{{skill.knowNobilityMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Planes</div>
+			<div class="col s2">{{skill.knowPlanes ? skillTotal(INT, skill.knowPlanesRanks, skill.knowPlanesMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowPlanesRanks}}</div>
+			<div class="col s2">{{skill.knowPlanesMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Knowledge Religioin</div>
+			<div class="col s2">{{skill.knowReligion ? skillTotal(INT, skill.knowReligionRanks, skill.knowReligionMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.knowReligionRanks}}</div>
+			<div class="col s2">{{skill.knowReligionMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Linguistics</div>
+			<div class="col s2">{{skill.linguistics ? skillTotal(INT, skill.linguisticsRanks, skill.linguisticsMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.linguisticsRanks}}</div>
+			<div class="col s2">{{skill.linguisticsMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Perception</div>
+			<div class="col s2">{{skill.perception ? skillTotal(WIS, skill.perceptionRanks, skill.perceptionMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.perceptionRanks}}</div>
+			<div class="col s2">{{skill.perceptionMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Perform: {{perform1Type}}</div>
+			<div class="col s2">{{skill.perform1 ? skillTotal(CHA, skill.perform1TypeRanks, skill.perform1TypeMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.perform1TypeRanks}}</div>
+			<div class="col s2">{{skill.perform1TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Perform: {{perform2Type}}</div>
+			<div class="col s2">{{skill.perform2 ? skillTotal(CHA, skill.perform2TypeRanks, skill.perform2TypeMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.perform2TypeRanks}}</div>
+			<div class="col s2">{{skill.perform2TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Profession: {{profession1Type}}</div>
+			<div class="col s2">{{skill.profession1 ? skillTotal(WIS, skill.profession1TypeRanks, skill.profession1TypeMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.profession1TypeRanks}}</div>
+			<div class="col s2">{{skill.profession1TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Profession: {{profession2Type}}</div>
+			<div class="col s2">{{skill.profession2 ? skillTotal(WIS, skill.profession2TypeRanks, skill.profession2TypeMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.profession2TypeRanks}}</div>
+			<div class="col s2">{{skill.profession2TypeMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Ride</div>
+			<div class="col s2">{{skill.ride ? skillTotal(DEX, skill.rideRanks, skill.rideMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.rideRanks}}</div>
+			<div class="col s2">{{skill.rideMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Sense Motive</div>
+			<div class="col s2">{{skill.senseMotive ? skillTotal(WIS, skill.senseMotiveRanks, skill.senseMotiveMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.senseMotiveRanks}}</div>
+			<div class="col s2">{{skill.senseMotiveMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Sleight of Hand</div>
+			<div class="col s2">{{skill.sleightOfHand ? skillTotal(DEX, skill.sleightOfHandRanks, skill.sleightOfHandMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.sleightOfHandRanks}}</div>
+			<div class="col s2">{{skill.sleightOfHandMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Spellcraft</div>
+			<div class="col s2">{{skill.spellCraft ? skillTotal(INT, skill.spellCraftRanks, skill.spellCraftMM) : ""}}</div>
+			<div class="col s2">=INT</div>
+			<div class="col s2">{{INT}}</div>
+			<div class="col s2">{{skill.spellCraftRanks}}</div>
+			<div class="col s2">{{skill.spellCraftMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Stealth</div>
+			<div class="col s2">{{skill.stealth ? skillTotal(DEX, skill.stealthRanks, skill.stealthMM) : ""}}</div>
+			<div class="col s2">=DEX</div>
+			<div class="col s2">{{DEX}}</div>
+			<div class="col s2">{{skill.stealthRanks}}</div>
+			<div class="col s2">{{skill.stealthMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Survival</div>
+			<div class="col s2">{{skill.survival ? skillTotal(WIS, skill.survivalRanks, skill.survivalMM) : ""}}</div>
+			<div class="col s2">=WIS</div>
+			<div class="col s2">{{WIS}}</div>
+			<div class="col s2">{{skill.survivalRanks}}</div>
+			<div class="col s2">{{skill.survivalMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Swim</div>
+			<div class="col s2">{{skill.swim ? skillTotal(STR, skill.swimRanks, skill.swimMM) : ""}}</div>
+			<div class="col s2">=STR</div>
+			<div class="col s2">{{STR}}</div>
+			<div class="col s2">{{skill.swimRanks}}</div>
+			<div class="col s2">{{skill.swimMM}}</div>
+		</div>
+		<div class="row">
+			<div class="col s2">Use Magic Device</div>
+			<div class="col s2">{{skill.useMagicDevice ? skillTotal(CHA, skill.useMagicDeviceRanks, skill.useMagicDeviceMM) : ""}}</div>
+			<div class="col s2">=CHA</div>
+			<div class="col s2">{{CHA}}</div>
+			<div class="col s2">{{skill.useMagicDeviceRanks}}</div>
+			<div class="col s2">{{skill.useMagicDeviceMM}}</div>
+		</div>
 	</div>
 </div>
 

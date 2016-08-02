@@ -31,6 +31,11 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 		$location.url("#/tracker/hero");
 	})
 
+	HeroFactory.getSkill(key)
+	.then(function(currSkill) {
+		$scope.skill = currSkill;
+	})
+
 
 	$scope.getMod = function(abilities) {
 		abilities.splice(6,2);
@@ -184,5 +189,9 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
 						parseInt(CMDMod);
 	};
 
+// SKILL//////////////////////	
+	$scope.skillTotal = function(a, b, c) {
+		return parseInt(a) + parseInt(b) + parseInt(c);
+	}
 
 });

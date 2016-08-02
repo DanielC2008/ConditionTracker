@@ -11,7 +11,7 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 		$scope.newMettle.uid = AuthFactory.getUser();
 		HeroFactory.postNewMettle($scope.newMettle)
 		.then(function() {
-			$location.url("/tracker/hero");
+			$location.url("/tracker/newSkill");
 		});
 	};
 
