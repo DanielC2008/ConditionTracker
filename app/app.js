@@ -7,7 +7,8 @@ const app = angular.module("tracker", ["ngRoute"])
 app.config(function($routeProvider, FBCreds) {
 		let authConfig = {
 		apiKey: FBCreds.apiKey,
-		authDomain: FBCreds.authDomain
+		authDomain: FBCreds.authDomain,
+		databaseURL: FBCreds.databaseURL
 	};
 	firebase.initializeApp(authConfig);
 

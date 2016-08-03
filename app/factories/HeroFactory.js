@@ -96,6 +96,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			$http.get(`${FirebaseURL}/abilities.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroAbl) {
 				for (let obj in heroAbl) {
+					heroAbl[obj].id = obj;
 					let abilities = heroAbl[obj];
 					resolve(abilities);
 				};
@@ -111,6 +112,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			$http.get(`${FirebaseURL}/mettle.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroMet) {
 				for (let obj in heroMet) {
+					heroMet[obj].id = obj;
 					let mettle = heroMet[obj];
 					resolve(mettle);
 				}
@@ -126,6 +128,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			$http.get(`${FirebaseURL}/skill.json?orderBy="heroKey"&equalTo="${key}"`)
 			.success(function(heroSkill) {
 				for (let obj in heroSkill) {
+					heroSkill[obj].id = obj;
 					let skill = heroSkill[obj];
 					resolve(skill);
 				}
@@ -141,9 +144,69 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const setHeroKey = function(id) {
+		console.log(id);
 		heroKey.splice(0, 1, id);
 	};
 
 
-	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey};
+	////////////// DELETE////////////
+
+		const deleteHero = function(id) {
+		console.log("hero", id);
+		return $q(function(resolve, reject) {
+			$http.delete(`${FirebaseURL}/heros/${id}.json`)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const deleteAbility = function(id) {
+		console.log("ability", id);
+		return $q(function(resolve, reject) {
+			$http.delete(`${FirebaseURL}/abilities/${id}.json`)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const deleteMettle = function(id) {
+		console.log("mettle", id);
+		return $q(function(resolve, reject) {
+			$http.delete(`${FirebaseURL}/mettle/${id}.json`)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const deleteSkill = function(id) {
+		console.log("skill", id);
+		return $q(function(resolve, reject) {
+			$http.delete(`${FirebaseURL}/skill/${id}.json`)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+
+
+
+
+
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill};
 });

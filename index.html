@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Condition Tracker</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.css">
 </head>
 <body ng-app="tracker">
@@ -16,6 +17,7 @@
         	 <ul id='dropdown1' class='dropdown-content'>
         	 	<div ng-repeat="hero in herosArray">
 				    <li><a ng-click="getHero(hero.id)">{{hero.characterName}}</a></li>
+				    <li><i ng-click="deleteHero(hero.id)" class="material-icons">delete_forever</i></li>
 				    </div>
 				  </ul>
         <li><a href="#/tracker/newHero">Create New Hero</a></li>
