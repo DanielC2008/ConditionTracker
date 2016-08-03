@@ -197,5 +197,5 @@
 			<div class="newInput col s3">Misc. Mod<input ng-model="newSkill.useMagicDeviceMM" ng-disabled="!newSkill.useMagicDevice"></div>
 		</div>	
 	</div>
-	<button ng-click="addNewSkill()">Submit</button>
+	<button ng-click="edit ? editSkill() : addNewSkill()">Submit</button>
 </div>
