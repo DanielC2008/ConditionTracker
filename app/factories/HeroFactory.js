@@ -67,12 +67,10 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/heros.json`)
 			.success(function(heros) {
-				console.log(heros);
 				Object.keys(heros).forEach(function(key){
 					heros[key].id=key;
 					heroNames.push(heros[key]);
 			});
-				console.log(heroNames, "heros");
 				resolve(heros);
 			})
 			.error(function(error) {
