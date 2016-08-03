@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HeroCtrl", function($scope, $location, HeroFactory, $timeout) {
+app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 
 	let key = HeroFactory.getHeroKey();	
 
