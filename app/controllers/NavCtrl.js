@@ -17,6 +17,36 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory) 
 			$location.url("/login");
 		};
 
+		$scope.deleteHero = function(id) {
+			let abilityId;
+			let	mettleId;
+			let skillId;
+			console.log("needs delete message");
+			HeroFactory.deleteHero(id)
+			.then(function() {
+			});
+			HeroFactory.getAbility(id)
+			.then(function(ablId){
+				abilityId = ablId.id;
+				HeroFactory.deleteAbility(abilityId)
+				.then(function() {
+				});
+			});
+			HeroFactory.getMettle(id)
+			.then(function(metId){
+				mettleId = metId.id;
+				HeroFactory.deleteMettle(mettleId)
+				.then(function() {
+				});
+			});
+			HeroFactory.getSkill(id)
+			.then(function(sklId){
+				skillId = sklId.id;
+				HeroFactory.deleteSkill(skillId)
+				.then(function() {
+				});
+			});
+		};
 
 
 });
