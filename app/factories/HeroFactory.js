@@ -156,9 +156,15 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const setEditKey = function(id) {
-		console.log(id);
 		editKey.splice(0, 1, id);
+		console.log(editKey);
 	};
+
+	const removeEditKey = function() {
+		editKey.splice(0, 1);
+				console.log(editKey);
+
+	}
 
 	////////////// DELETE////////////
 
@@ -228,9 +234,48 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		});
 	};
 
+	const putAbility = function(obj) {
+		return $q(function(resolve, reject) {
+			$http.put(`${FirebaseURL}/abilities/${obj.id}.json`,
+				obj)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const putMettle = function(obj) {
+		return $q(function(resolve, reject) {
+			$http.put(`${FirebaseURL}/mettle/${obj.id}.json`,
+				obj)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	const putSkill = function(obj) {
+		return $q(function(resolve, reject) {
+			$http.put(`${FirebaseURL}/skill/${obj.id}.json`,
+				obj)
+			.success(function() {
+					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
 
 
 
 
-	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero};
+
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero, putAbility, putMettle, putSkill, removeEditKey};
 });

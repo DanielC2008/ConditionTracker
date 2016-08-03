@@ -1,6 +1,16 @@
 "use strict";
 
 app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $location) {
+	$scope.edit = false;
+	let editKey = HeroFactory.getEditKey();
+	if (editKey) {
+		HeroFactory.getMettle(editKey)
+		.then(function(obj) {
+			$scope.newMettle = obj;
+			$scope.edit = true;
+		})
+	}
+
 
 	$scope.addNewMettle = function() {
 		for (let item in $scope.newMettle) {
@@ -10,6 +20,13 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 		}
 		$scope.newMettle.uid = AuthFactory.getUser();
 		HeroFactory.postNewMettle($scope.newMettle)
+		.then(function() {
+			$location.url("/tracker/newSkill");
+		});
+	};
+
+	$scope.editMettle = function() {
+		HeroFactory.putMettle($scope.newMettle)
 		.then(function() {
 			$location.url("/tracker/newSkill");
 		});

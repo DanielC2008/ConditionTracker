@@ -17,12 +17,18 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, 
 			$location.url("/login");
 		};
 
+
 		$scope.editHero = function() {
 			let editKey = HeroFactory.getHeroKey();
 			HeroFactory.setEditKey(editKey);
 			if (editKey) {
 				$location.url("/tracker/newHero");
 			}	
+		}
+
+		$scope.addHero = function() {
+			HeroFactory.removeEditKey();
+				$location.url("/tracker/newHero");
 		}
 
 

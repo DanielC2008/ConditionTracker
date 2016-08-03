@@ -10,7 +10,6 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 			$scope.edit = true;
 		})
 	}
-console.log($scope.edit);
 
 	$scope.addNewHero = function() {
 		$scope.newHero.uid = AuthFactory.getUser();
@@ -23,7 +22,7 @@ console.log($scope.edit);
 	$scope.editHero = function() {
 		HeroFactory.putHero($scope.newHero)
 		.then(function() {
-			$location.url("/tracker/hero");
+			$location.url("/tracker/newAbility");
 		});
 	};
 

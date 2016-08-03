@@ -1,6 +1,16 @@
 "use strict";
 
 app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $location) {
+	$scope.edit = false;
+	let editKey = HeroFactory.getEditKey();
+	if (editKey) {
+		HeroFactory.getSkill(editKey)
+		.then(function(obj) {
+			$scope.newSkill = obj;
+			$scope.edit = true;
+		})
+	}
+
 
 	$scope.addNewSkill = function() {
 		for (let item in $scope.newSkill) {
@@ -14,6 +24,16 @@ app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $locat
 			$location.url("/tracker/hero");
 		});
 	};
+
+
+	$scope.editSkill = function() {
+		HeroFactory.putSkill($scope.newSkill)
+		.then(function() {
+			HeroFactory.removeEditKey();
+			$location.url("/tracker/hero");
+		});
+	};
+
 
 	$scope.newSkill = {
 		acrobatics : false,

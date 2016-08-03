@@ -1,6 +1,17 @@
 "use strict";
 
 app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $location) {
+	$scope.edit = false;
+	let editKey = HeroFactory.getEditKey();
+	if (editKey) {
+		HeroFactory.getAbility(editKey)
+		.then(function(obj) {
+			console.log(obj);
+			$scope.newAbility = obj;
+			$scope.edit = true;
+		})
+	}
+
 
 	$scope.addNewAbility = function() {
 		for (let item in $scope.newAbility) {
@@ -10,6 +21,13 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 		}
 		$scope.newAbility.uid = AuthFactory.getUser();
 		HeroFactory.postNewAbility($scope.newAbility)
+		.then(function() {
+			$location.url("/tracker/newMettle");
+		});
+	};
+
+	$scope.editAbility = function() {
+		HeroFactory.putAbility($scope.newAbility)
 		.then(function() {
 			$location.url("/tracker/newMettle");
 		});
