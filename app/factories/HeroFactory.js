@@ -1,7 +1,7 @@
 "use strict";
 
 app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
-	let heroKey = ["-KOB_yW1zIPfxG31_nB4"];
+	let heroKey = [];
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
 		return $q(function(resolve, reject) {
@@ -61,6 +61,26 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 
 ////////////// GET////////////
+
+	const dropDown = function() {
+		let heroNames = [];
+		return $q(function(resolve, reject) {
+			$http.get(`${FirebaseURL}/heros.json`)
+			.success(function(heros) {
+				console.log(heros);
+				Object.keys(heros).forEach(function(key){
+					heros[key].id=key;
+					heroNames.push(heros[key]);
+			});
+				console.log(heroNames, "heros");
+				resolve(heros);
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
 	const getHero = function(key) {
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/heros/${key}.json`)
@@ -122,10 +142,10 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		return heroKey[0];
 	};
 
-	// const setHeroKey = function() {
+	const setHeroKey = function(id) {
+		heroKey.splice(0, 1, id);
+	};
 
-	// };
 
-
-	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill};
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey};
 });
