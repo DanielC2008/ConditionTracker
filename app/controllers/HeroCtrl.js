@@ -1,11 +1,13 @@
 "use strict";
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory) {
+	let key = HeroFactory.getHeroKey();	
 
-	$(".button-collapse").sideNav();
 //////////////CONDITIONS///////////////////
 	$scope.conditionList = false;
-	let key = HeroFactory.getHeroKey();	
+	$('.modal-trigger').leanModal();
+	$(".button-collapse").sideNav();
+	$scope.text = null;
 
 	$scope.addOnClick = function(event) {
 		if (event.offsetX === 0) {
@@ -13,7 +15,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		}
 }
 
-	$scope.text = "";
 
 	$scope.setText = function(text) {
 		$scope.text = text;
@@ -23,6 +24,10 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	.then(function(conditionArr) {
 		$scope.conditions = conditionArr;
 	});
+
+	$scope.removeCon = function() {
+		$scope.text = null;
+	}
 
 
 ///////FIREBASE CALLS///////////////
