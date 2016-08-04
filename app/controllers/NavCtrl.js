@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, $route) {
-		
+
 		HeroFactory.dropDown()
 		.then(function(heros) {
 			$scope.herosArray = heros; 

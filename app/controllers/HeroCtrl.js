@@ -1,17 +1,31 @@
 "use strict";
 
-app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
+app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory) {
 
+	$(".button-collapse").sideNav();
+//////////////CONDITIONS///////////////////
+	$scope.conditionList = false;
 	let key = HeroFactory.getHeroKey();	
-
 
 	$scope.addOnClick = function(event) {
 		if (event.offsetX === 0) {
-		console.log("herro");
-			$('.button-collapse').sideNav('show');
+		$scope.conditionsList = true;
 		}
 }
 
+	$scope.text = "";
+
+	$scope.setText = function(text) {
+		$scope.text = text;
+	}
+
+	ConditionFactory.getConditions()
+	.then(function(conditionArr) {
+		$scope.conditions = conditionArr;
+	});
+
+
+///////FIREBASE CALLS///////////////
 	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		$scope.hero = currHero;
