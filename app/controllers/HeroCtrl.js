@@ -5,6 +5,13 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	let key = HeroFactory.getHeroKey();	
 
 
+	$scope.addOnClick = function(event) {
+		if (event.offsetX === 0) {
+		console.log("herro");
+			$('.button-collapse').sideNav('show');
+		}
+}
+
 	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		$scope.hero = currHero;
