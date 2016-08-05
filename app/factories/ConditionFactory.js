@@ -10,6 +10,13 @@ app.factory("ConditionFactory", function($q, $http, FirebaseURL) {
 				for (let cond in conditionsObj) {
 					conditionsArray.push(conditionsObj[cond])
 				};
+				conditionsArray.sort(function(a,b) {
+  				if (a.name < b.name)
+   				 return -1;
+  				if (a.name > b.name)
+   				 return 1;
+  				return 0;
+				});
 				resolve(conditionsArray);
 			})
 			.error(function(error) {

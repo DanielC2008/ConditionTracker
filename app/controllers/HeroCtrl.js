@@ -22,6 +22,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 	ConditionFactory.getConditions()
 	.then(function(conditionArr) {
+
 		$scope.conditions = conditionArr;
 	});
 
