@@ -1,33 +1,54 @@
 "use strict";
 
-app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory) {
+app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
 	let key = HeroFactory.getHeroKey();	
 
 //////////////CONDITIONS///////////////////
+	$scope.inflictedConditions = [];
+	// only show conditions if charcter clicked
 	$scope.conditionList = false;
 	$('.modal-trigger').leanModal();
 	$(".button-collapse").sideNav();
 	$scope.text = null;
 
+
 	$scope.addOnClick = function(event) {
 		if (event.offsetX === 0) {
 		$scope.conditionsList = true;
 		}
-}
-
-
-	$scope.setText = function(text) {
-		$scope.text = text;
 	}
-
 	ConditionFactory.getConditions()
 	.then(function(conditionArr) {
 
 		$scope.conditions = conditionArr;
 	});
 
+// set inflicted conditions array
+	$scope.setCondition = function(text, name) {
+		let newObj = new Object();
+			newObj.name = `${name}`
+			newObj.text = `${text}`;
+
+		$scope.inflictedConditions.push(newObj);
+		console.log($scope.inflictedConditions.length);
+		
+	}
+
+	$scope.setText = function(text) {
+		$scope.text = text;
+		$('#modal1').openModal();
+	}
+
+
 	$scope.removeCon = function() {
+		console.log();
+		// $scope.ConditionSrv = new ConditionSrv($scope, name);
 		$scope.text = null;
+	}
+
+
+	$scope.inflict = function(name) {
+			$scope.ConditionSrv = new ConditionSrv($scope, name);
 	}
 
 
@@ -77,6 +98,9 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 	$scope.getMod = function(which, abl, temp) {
 		if (temp === "") {
+			temp = 0;
+		};
+		if (temp === "-") {
 			temp = 0;
 		};
 		if (which === "CHA") {

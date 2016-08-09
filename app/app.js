@@ -41,7 +41,7 @@ when("/tracker/conditions", {
 	templateUrl: "partials/conditions.html",
 	controller: "ConditionsCtrl"
 }).
-otherwise("/login");
+otherwise("/tracker/hero");
 
 
 });
