@@ -4,8 +4,23 @@ app.service("ConditionSrv", function() {
 	
 	function ConditionSrv(scope, name, condition) {
 		this.scope = scope;
+		console.log(name);
+////////BLINDED/////////////		
+	if (name === "Blinded") {
+		if (condition) {
+		this.scope.tempAC = this.scope.tempAC -
+																2 -
+																this.scope.DEX;
+		}	else {
+			this.scope.tempAC = this.scope.tempAC +
+																2 +
+																this.scope.DEX;
+		}													 	
+	}
+	
 
-		
+
+
 ////////FATIGUED/////////////		
 	if (name === "Fatigued") {
 		// ensuring everything is a number

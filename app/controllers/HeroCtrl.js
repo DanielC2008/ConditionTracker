@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
-	let key = HeroFactory.getHeroKey();	
+	let key = HeroFactory.getHeroKey();
 
 //////////////CONDITIONS///////////////////
 	$scope.inflictedConditions = [];
@@ -49,7 +49,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 			}
 		})
 	}
-
 	// inflict condition
 	$scope.inflict = function(name) {
 		let condition = true;
@@ -83,12 +82,13 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	HeroFactory.getMettle(key)
 	.then(function(currMettle) {
 		$scope.mettle = currMettle;
-		$scope.mettle.currHealth =$scope.mettle.healthPoints;
+		$scope.mettle.currHealth = $scope.mettle.healthPoints;
 		$scope.tempFortMod = "";
 		$scope.tempRefMod = "";
 		$scope.tempWillMod = "";
 		$scope.tempCMB = "";
 		$scope.tempCMD = "";
+		$scope.tempAC = "";
 		if ($scope.mettle.dodge){
 			$scope.mettle.dodgeBonus = 1 ;
 		}
@@ -145,15 +145,21 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 // ARMOR CLASS//////////////////////
 	$scope.getAC = function() {
-		return  10 +
+		let tempAC = $scope.tempAC;
+		if (tempAC === "") {
+			tempAC = 0;
+		}
+		return 	10 +
 						parseInt($scope.mettle.armorBonus) +
 						parseInt($scope.mettle.shieldBonus) +
 						parseInt($scope.mettle.sizeMod) +
 						parseInt($scope.mettle.naturalArmor) +
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
-						parseInt($scope.DEX);
+						parseInt($scope.DEX) +
+						parseInt(tempAC);
 	};
+	
 
 	$scope.touchAC = function() {
 		return  10 +
