@@ -24,7 +24,7 @@
 					<a href="#" data-activates="slide-out" class="button-collapse"><img class="responsive-img" src="../img/Darth_Maul.png" alt=""></a>
 						<div ng-repeat="item in inflictedConditions">
 							<a class="waves-effect blue-grey btn modal-trigger" ng-click="setText(item.text)" >{{item.name}}</a>
-							<a class="waves-effect blue-grey btn" ng-click="removeCon()">Remove Condition</a>
+							<a class="waves-effect blue-grey btn" ng-click="removeCon(item.name)">Remove Condition</a>
 						</div>
 				</div>
 			</div>

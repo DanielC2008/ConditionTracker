@@ -7,8 +7,10 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	$scope.inflictedConditions = [];
 	// only show conditions if charcter clicked
 	$scope.conditionList = false;
+	// initializing modals
 	$('.modal-trigger').leanModal();
 	$(".button-collapse").sideNav();
+	// establishing text for bottom modal
 	$scope.text = null;
 
 
@@ -30,25 +32,28 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 			newObj.text = `${text}`;
 
 		$scope.inflictedConditions.push(newObj);
-		console.log($scope.inflictedConditions.length);
-		
+		$('.button-collapse').sideNav('hide');
 	}
-
+	// set text for bottom modal
 	$scope.setText = function(text) {
 		$scope.text = text;
 		$('#modal1').openModal();
 	}
-
-
-	$scope.removeCon = function() {
-		console.log();
-		// $scope.ConditionSrv = new ConditionSrv($scope, name);
-		$scope.text = null;
+	// remove specific condition
+	$scope.removeCon = function(name) {
+		let condition = false;
+		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
+		$scope.inflictedConditions.forEach(function(curr, index) {
+			if (curr.name === name) {
+				$scope.inflictedConditions.splice(index, 1)
+			}
+		})
 	}
 
-
+	// inflict condition
 	$scope.inflict = function(name) {
-			$scope.ConditionSrv = new ConditionSrv($scope, name);
+		let condition = true;
+		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
 	}
 
 
