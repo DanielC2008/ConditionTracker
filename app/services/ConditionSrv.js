@@ -7,13 +7,13 @@ app.service("ConditionSrv", function() {
 		console.log(name);
 ////////BLINDED/////////////		
 	if (name === "Blinded") {
-		if (condition) {
 			if (this.scope.tempAC === undefined) {
 				this.scope.tempAC = 0;
 			}
 			if (this.scope.tempAC === '') {
 				this.scope.tempAC = 0;
 			}
+		if (condition) {
 			this.scope.tempAC = (this.scope.tempAC - Math.abs(this.scope.DEX)) - 2;
 			this.scope.skill.acrobaticsMM -= 4; 
 			this.scope.skill.climbMM -= 4; 
@@ -25,7 +25,7 @@ app.service("ConditionSrv", function() {
 			this.scope.skill.stealthMM -= 4; 
 			this.scope.skill.swimMM -= 4; 
 		}	else {
-			this.scope.tempAC = (this.scope.tempAC + Math.abs(this.scope.DEX)) + 2;
+			this.scope.tempAC = (this.scope.tempAC +  Math.abs(this.scope.DEX)) +  2;
 			this.scope.skill.acrobaticsMM += 4;	
 			this.scope.skill.climbMM += 4; 
 			this.scope.skill.disableDeviceMM += 4; 
@@ -37,9 +37,41 @@ app.service("ConditionSrv", function() {
 			this.scope.skill.swimMM += 4; 													
 		}													 	
 	}
-	
 
+////////COWERING/////////////		
+	if (name === "Cowering") {	
+		if (this.scope.tempAC === undefined) {
+				this.scope.tempAC = 0;
+			}
+		if (this.scope.tempAC === '') {
+			this.scope.tempAC = 0;
+		}
+		if (condition) {
+			this.scope.tempAC -= 2;
+			this.scope.mettle.speed = 0;
+			this.scope.tempDEX -= this.scope.originalDEX; 
+		} else {
+			this.scope.tempAC += 2;
+			this.scope.mettle.speed = this.scope.originalSpeed; 
+			this.scope.tempDEX += this.scope.originalDEX;
+		} 
+	}	
 
+////////DEAFENED/////////////		
+	if (name === "Deafened") {
+		let x = condition ? 4 : -4;
+		this.scope.mettle.MMinitiation -= x;
+	}
+
+////////EXHAUSTED/////////////		
+	if (name === "Exhausted") {
+		let x;
+		let y;
+		condition ? (x = 6, y = 2) : (x = -6, y = .5);
+		this.scope.tempDEX -= x;
+		this.scope.tempSTR -= x;
+		this.scope.mettle.speed /= y;
+	}	
 
 ////////FATIGUED/////////////		
 	if (name === "Fatigued") {
@@ -65,8 +97,24 @@ app.service("ConditionSrv", function() {
 				this.scope.tempSTR += 2;
 			}	
 		}
-	}	
+
+////////HELPLESS/////////////		
+	if (name === "Helpless") {
+		if (condition) {
+			console.log(this.scope.originalDEX);
+			this.scope.mettle.speed = 0;
+			this.scope.tempDEX =  0 - Math.abs(this.scope.tempDEX) - Math.abs(this.scope.originalDEX) - 5;
+		} else {
+				 this.scope.mettle.speed = this.scope.originalSpeed;
+				 this.scope.tempDEX = this.scope.tempDEX + Math.abs(this.scope.originalDEX) + 5;		
+			}	
+	}
 	
 
+
+
+	
+// dont touch 
+	}	
 	return ConditionSrv;
 });

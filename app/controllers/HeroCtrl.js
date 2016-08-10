@@ -2,7 +2,9 @@
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
 	let key = HeroFactory.getHeroKey();
-
+	// reset for conditions
+	$scope.originalSpeed = null;
+	$scope.originalDEX = null;
 //////////////CONDITIONS///////////////////
 	$scope.inflictedConditions = [];
 	// only show conditions if charcter clicked
@@ -89,9 +91,8 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		$scope.tempCMB = "";
 		$scope.tempCMD = "";
 		$scope.tempAC = "";
-		if ($scope.mettle.dodge){
-			$scope.mettle.dodgeBonus = 1 ;
-		}
+		$scope.originalSpeed = $scope.mettle.speed;
+		$scope.mettle.dodgeBonus = $scope.mettle.dodge ? 1 : 0;
 		$location.url("#/tracker/hero");
 	})
 
@@ -118,6 +119,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		}
 		if (which === "DEX") {
 			$scope.DEX  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			$scope.originalDEX = (Math.floor(parseInt(abl)/2) -5);
 			return $scope.DEX;
 		}
 		if (which === "INT") {
@@ -161,7 +163,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	};
 	
 
-	$scope.touchAC = function() {
+	$scope.flatFooted = function() {
 		return  10 +
 						parseInt($scope.mettle.armorBonus) +
 						parseInt($scope.mettle.shieldBonus) +
@@ -171,12 +173,14 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt($scope.mettle.MMArmor)
 	};
 
-		$scope.flatFooted = function() {
+		$scope.touchAC = function() {
 		return  10 +
 						parseInt($scope.mettle.sizeMod) +
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
-						parseInt($scope.DEX);
+						parseInt($scope.DEX) +
+						parseInt($scope.mettle.dodgeBonus);
+
 	};
 
 // SAVING THROWS//////////////////////
