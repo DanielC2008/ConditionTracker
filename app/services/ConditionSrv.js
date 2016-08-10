@@ -8,13 +8,33 @@ app.service("ConditionSrv", function() {
 ////////BLINDED/////////////		
 	if (name === "Blinded") {
 		if (condition) {
-		this.scope.tempAC = this.scope.tempAC -
-																2 -
-																this.scope.DEX;
+			if (this.scope.tempAC === undefined) {
+				this.scope.tempAC = 0;
+			}
+			if (this.scope.tempAC === '') {
+				this.scope.tempAC = 0;
+			}
+			this.scope.tempAC = (this.scope.tempAC - Math.abs(this.scope.DEX)) - 2;
+			this.scope.skill.acrobaticsMM -= 4; 
+			this.scope.skill.climbMM -= 4; 
+			this.scope.skill.disableDeviceMM -= 4; 
+			this.scope.skill.escapeArtistMM -= 4; 
+			this.scope.skill.flyMM -= 4; 
+			this.scope.skill.rideMM -= 4; 
+			this.scope.skill.sleightOfHandMM -= 4; 
+			this.scope.skill.stealthMM -= 4; 
+			this.scope.skill.swimMM -= 4; 
 		}	else {
-			this.scope.tempAC = this.scope.tempAC +
-																2 +
-																this.scope.DEX;
+			this.scope.tempAC = (this.scope.tempAC + Math.abs(this.scope.DEX)) + 2;
+			this.scope.skill.acrobaticsMM += 4;	
+			this.scope.skill.climbMM += 4; 
+			this.scope.skill.disableDeviceMM += 4; 
+			this.scope.skill.escapeArtistMM += 4; 
+			this.scope.skill.flyMM += 4; 
+			this.scope.skill.rideMM += 4; 
+			this.scope.skill.sleightOfHandMM += 4; 
+			this.scope.skill.stealthMM += 4; 
+			this.scope.skill.swimMM += 4; 													
 		}													 	
 	}
 	
@@ -38,11 +58,11 @@ app.service("ConditionSrv", function() {
 		}
 		// if true add it, if false reverse it
 		if (condition === true) {
-			this.scope.tempDEX = parseInt(this.scope.tempDEX) - 2;
-			this.scope.tempSTR = parseInt(this.scope.tempSTR) - 2;
+			this.scope.tempDEX -= 2;
+			this.scope.tempSTR -= 2;
 		} else {
-				this.scope.tempDEX = parseInt(this.scope.tempDEX) + 2;
-				this.scope.tempSTR = parseInt(this.scope.tempSTR) + 2;
+				this.scope.tempDEX += 2;
+				this.scope.tempSTR += 2;
 			}	
 		}
 	}	
