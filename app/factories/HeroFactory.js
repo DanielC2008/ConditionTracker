@@ -157,19 +157,16 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 	const setEditKey = function(id) {
 		editKey.splice(0, 1, id);
-		console.log(editKey);
 	};
 
 	const removeEditKey = function() {
-		editKey.splice(0, 1);
-				console.log(editKey);
+		editKey.splice(0, 1);	
 
 	}
 
 	////////////// DELETE////////////
 
 		const deleteHero = function(id) {
-		console.log("hero", id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/heros/${id}.json`)
 			.success(function() {
@@ -182,7 +179,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const deleteAbility = function(id) {
-		console.log("ability", id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/abilities/${id}.json`)
 			.success(function() {
@@ -195,7 +191,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const deleteMettle = function(id) {
-		console.log("mettle", id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/mettle/${id}.json`)
 			.success(function() {
@@ -208,7 +203,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const deleteSkill = function(id) {
-		console.log("skill", id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/skill/${id}.json`)
 			.success(function() {

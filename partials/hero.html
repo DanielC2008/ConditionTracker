@@ -1,9 +1,31 @@
+<!-- FOR SIDE NAV -->
+	<ul id="slide-out" class="side-nav">
+		<li>
+ 			<div ng-repeat="con in conditions">
+			<button ng-click="setCondition(con.description, con.name); inflict(con.name)">{{con.name}}</button>
+			</div>
+		</li>
+  </ul>
+<!-- FOR BOTTOM MODAL -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+     	<div ng-bind="text"></div>
+    </div> 
+  </div>
+
+
+
+
 <div class="row">
  	<div class="col s3">
     <div class="col s12">
       <div class="card">
 				<div class="card-image">
-					<img class="responsive-img" src="../img/Darth_Maul.png" alt="">
+					<a href="#" data-activates="slide-out" class="button-collapse"><img class="responsive-img" src="../img/Darth_Maul.png" alt=""></a>
+						<div ng-repeat="item in inflictedConditions">
+							<a class="waves-effect blue-grey btn modal-trigger" ng-click="setText(item.text)" >{{item.name}}</a>
+							<a class="waves-effect blue-grey btn" ng-click="removeCon(item.name)">Remove Condition</a>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -154,6 +176,7 @@
 			<div class="col s2 center align">Deflection Bonus</div>
 			<div class="col s1 center align">Dodge</div>
 			<div class="col s1 center align">Misc Mod</div>
+			<div class="col s1 center align">Temp Mod</div>
 		</div>
 		<div class="row">
 			<div class="col s1 center align" ng-if="mettle" ng-bind="getAC()"></div>
@@ -165,7 +188,8 @@
 			<div class="col s1 center align">{{mettle.naturalArmor}}</div>
 			<div class="col s2 center align">{{mettle.deflectionMod}}</div>
 			<div class="col s1 center align">{{mettle.dodgeBonus}}</div>
-			<div class="col s1 center align">{{mettle.MMArmor}}</div>			
+			<div class="col s1 center align">{{mettle.MMArmor}}</div>
+			<input class="col s1" ng-model="tempAC">			
 		</div>
 		<div class="row">
 			<div class="col s12 center align"> Skills</div>
@@ -211,7 +235,7 @@
 			<div class="col s2">{{skill.climbMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{CraftType1}}</div>
+			<div class="col s2">Craft: {{skill.craft1Type}}</div>
 			<div class="col s2">{{skill.craft1 ? skillTotal(INT, skill.craft1TypeRanks, skill.craft1TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
@@ -219,7 +243,7 @@
 			<div class="col s2">{{skill.craft1TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{CraftType2}}</div>
+			<div class="col s2">Craft: {{skill.craftType2}}</div>
 			<div class="col s2">{{skill.craft2 ? skillTotal(INT, skill.craft2TypeRanks, skill.craft2TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
@@ -227,7 +251,7 @@
 			<div class="col s2">{{skill.craft2TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{CraftType3}}</div>
+			<div class="col s2">Craft: {{skill.craftType3}}</div>
 			<div class="col s2">{{skill.craft3 ? skillTotal(INT, skill.craft3TypeRanks, skill.craft3TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
@@ -395,7 +419,7 @@
 			<div class="col s2">{{skill.perceptionMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Perform: {{perform1Type}}</div>
+			<div class="col s2">Perform: {{skill.perform1Type}}</div>
 			<div class="col s2">{{skill.perform1 ? skillTotal(CHA, skill.perform1TypeRanks, skill.perform1TypeMM) : ""}}</div>
 			<div class="col s2">=CHA</div>
 			<div class="col s2">{{CHA}}</div>
@@ -403,7 +427,7 @@
 			<div class="col s2">{{skill.perform1TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Perform: {{perform2Type}}</div>
+			<div class="col s2">Perform: {{skill.perform2Type}}</div>
 			<div class="col s2">{{skill.perform2 ? skillTotal(CHA, skill.perform2TypeRanks, skill.perform2TypeMM) : ""}}</div>
 			<div class="col s2">=CHA</div>
 			<div class="col s2">{{CHA}}</div>
@@ -411,7 +435,7 @@
 			<div class="col s2">{{skill.perform2TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Profession: {{profession1Type}}</div>
+			<div class="col s2">Profession: {{skill.profession1Type}}</div>
 			<div class="col s2">{{skill.profession1 ? skillTotal(WIS, skill.profession1TypeRanks, skill.profession1TypeMM) : ""}}</div>
 			<div class="col s2">=WIS</div>
 			<div class="col s2">{{WIS}}</div>
@@ -419,7 +443,7 @@
 			<div class="col s2">{{skill.profession1TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Profession: {{profession2Type}}</div>
+			<div class="col s2">Profession: {{skill.profession2Type}}</div>
 			<div class="col s2">{{skill.profession2 ? skillTotal(WIS, skill.profession2TypeRanks, skill.profession2TypeMM) : ""}}</div>
 			<div class="col s2">=WIS</div>
 			<div class="col s2">{{WIS}}</div>
@@ -492,5 +516,3 @@
 		</div>
 	</div>
 </div>
-
-

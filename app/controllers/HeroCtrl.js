@@ -1,10 +1,65 @@
 "use strict";
 
-app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
+app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
+	let key = HeroFactory.getHeroKey();
+	// reset for conditions
+	$scope.originalSpeed = null;
+	$scope.originalDEX = null;
+	$scope.originalSTR = null;
+//////////////CONDITIONS///////////////////
+	$scope.inflictedConditions = [];
+	// only show conditions if charcter clicked
+	$scope.conditionList = false;
+	// initializing modals
+	$('.modal-trigger').leanModal();
+	$(".button-collapse").sideNav();
+	// establishing text for bottom modal
+	$scope.text = null;
 
-	let key = HeroFactory.getHeroKey();	
+
+	$scope.addOnClick = function(event) {
+		if (event.offsetX === 0) {
+		$scope.conditionsList = true;
+		}
+	}
+	ConditionFactory.getConditions()
+	.then(function(conditionArr) {
+
+		$scope.conditions = conditionArr;
+	});
+
+// set inflicted conditions array
+	$scope.setCondition = function(text, name) {
+		let newObj = new Object();
+			newObj.name = `${name}`
+			newObj.text = `${text}`;
+
+		$scope.inflictedConditions.push(newObj);
+		$('.button-collapse').sideNav('hide');
+	}
+	// set text for bottom modal
+	$scope.setText = function(text) {
+		$scope.text = text;
+		$('#modal1').openModal();
+	}
+	// remove specific condition
+	$scope.removeCon = function(name) {
+		let condition = false;
+		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
+		$scope.inflictedConditions.forEach(function(curr, index) {
+			if (curr.name === name) {
+				$scope.inflictedConditions.splice(index, 1)
+			}
+		})
+	}
+	// inflict condition
+	$scope.inflict = function(name) {
+		let condition = true;
+		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
+	}
 
 
+///////FIREBASE CALLS///////////////
 	HeroFactory.getHero(key)
 	.then(function(currHero) {
 		$scope.hero = currHero;
@@ -30,15 +85,15 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 	HeroFactory.getMettle(key)
 	.then(function(currMettle) {
 		$scope.mettle = currMettle;
-		$scope.mettle.currHealth =$scope.mettle.healthPoints;
+		$scope.mettle.currHealth = $scope.mettle.healthPoints;
 		$scope.tempFortMod = "";
 		$scope.tempRefMod = "";
 		$scope.tempWillMod = "";
 		$scope.tempCMB = "";
 		$scope.tempCMD = "";
-		if ($scope.mettle.dodge){
-			$scope.mettle.dodgeBonus = 1 ;
-		}
+		$scope.tempAC = "";
+		$scope.originalSpeed = $scope.mettle.speed;
+		$scope.mettle.dodgeBonus = $scope.mettle.dodge ? 1 : 0;
 		$location.url("#/tracker/hero");
 	})
 
@@ -52,6 +107,9 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		if (temp === "") {
 			temp = 0;
 		};
+		if (temp === "-") {
+			temp = 0;
+		};
 		if (which === "CHA") {
 			$scope.CHA   = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
 			return $scope.CHA;
@@ -62,6 +120,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		}
 		if (which === "DEX") {
 			$scope.DEX  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			$scope.originalDEX = (Math.floor(parseInt(abl)/2) -5);
 			return $scope.DEX;
 		}
 		if (which === "INT") {
@@ -70,6 +129,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 		}
 		if (which === "STR") {
 			$scope.STR  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			$scope.originalSTR = (Math.floor(parseInt(abl)/2) -5);
 			return $scope.STR;		
 		}
 		if (which === "WIS") {
@@ -89,17 +149,23 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 
 // ARMOR CLASS//////////////////////
 	$scope.getAC = function() {
-		return  10 +
+		let tempAC = $scope.tempAC;
+		if (tempAC === "") {
+			tempAC = 0;
+		}
+		return 	10 +
 						parseInt($scope.mettle.armorBonus) +
 						parseInt($scope.mettle.shieldBonus) +
 						parseInt($scope.mettle.sizeMod) +
 						parseInt($scope.mettle.naturalArmor) +
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
-						parseInt($scope.DEX);
+						parseInt($scope.DEX) +
+						parseInt(tempAC);
 	};
+	
 
-	$scope.touchAC = function() {
+	$scope.flatFooted = function() {
 		return  10 +
 						parseInt($scope.mettle.armorBonus) +
 						parseInt($scope.mettle.shieldBonus) +
@@ -109,12 +175,14 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory) {
 						parseInt($scope.mettle.MMArmor)
 	};
 
-		$scope.flatFooted = function() {
+		$scope.touchAC = function() {
 		return  10 +
 						parseInt($scope.mettle.sizeMod) +
 						parseInt($scope.mettle.deflectionMod) +
 						parseInt($scope.mettle.MMArmor) +
-						parseInt($scope.DEX);
+						parseInt($scope.DEX) +
+						parseInt($scope.mettle.dodgeBonus);
+
 	};
 
 // SAVING THROWS//////////////////////

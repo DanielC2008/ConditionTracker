@@ -37,7 +37,7 @@ when("/tracker/hero", {
 	templateUrl: "partials/hero.html",
 	controller: "HeroCtrl"
 }).
-otherwise("/login");
+otherwise("/tracker/hero");
 
 
 });

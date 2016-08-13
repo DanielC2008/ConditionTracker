@@ -6,7 +6,6 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 	if (editKey) {
 		HeroFactory.getAbility(editKey)
 		.then(function(obj) {
-			console.log(obj);
 			$scope.newAbility = obj;
 			$scope.edit = true;
 		})
