@@ -35,6 +35,7 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 	$scope.newMettle = {
 		healthPoints : null,
 		damageReduction : null,
+		hitDice : null,
 		MMinitiation : null,
 		armorBonus : null,
 		shieldBonus : null,

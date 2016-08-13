@@ -34,6 +34,7 @@
 				<div class="col s12" ng-if="mettle">Touch AC: {{touchAC()}}	</div>
 				<div class="col s12" ng-if="mettle">Flat Footed: {{flatFooted()}}</div>
 				<div class="col s12">BAB: {{mettle.baseAttackBonus}}</div>
+				<div class="col s12">Hit Dice: {{mettle.hitDice}}</div>
 				<div class="col s12">Spell Resistance: {{mettle.spellResistance}}</div>
 				<div class="col s8" ng-if="mettle">CMB:	{{getCMB()}}</div>
 				<input class="col s4" ng-model="tempCMB">
@@ -243,7 +244,7 @@
 			<div class="col s2">{{skill.craft1TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{skill.craftType2}}</div>
+			<div class="col s2">Craft: {{skill.craft2Type}}</div>
 			<div class="col s2">{{skill.craft2 ? skillTotal(INT, skill.craft2TypeRanks, skill.craft2TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
@@ -251,7 +252,7 @@
 			<div class="col s2">{{skill.craft2TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{skill.craftType3}}</div>
+			<div class="col s2">Craft: {{skill.craft3Type}}</div>
 			<div class="col s2">{{skill.craft3 ? skillTotal(INT, skill.craft3TypeRanks, skill.craft3TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
