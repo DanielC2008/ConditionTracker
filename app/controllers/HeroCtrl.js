@@ -5,6 +5,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	// reset for conditions
 	$scope.originalSpeed = null;
 	$scope.originalDEX = null;
+	$scope.originalSTR = null;
 //////////////CONDITIONS///////////////////
 	$scope.inflictedConditions = [];
 	// only show conditions if charcter clicked
@@ -128,6 +129,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		}
 		if (which === "STR") {
 			$scope.STR  = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
+			$scope.originalSTR = (Math.floor(parseInt(abl)/2) -5);
 			return $scope.STR;		
 		}
 		if (which === "WIS") {

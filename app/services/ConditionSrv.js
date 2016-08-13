@@ -7,45 +7,24 @@ app.service("ConditionSrv", function() {
 		console.log(name);
 ////////BLINDED/////////////		
 	if (name === "Blinded") {
-			if (this.scope.tempAC === undefined) {
-				this.scope.tempAC = 0;
-			}
-			if (this.scope.tempAC === '') {
-				this.scope.tempAC = 0;
-			}
-		if (condition) {
-			this.scope.tempAC = (this.scope.tempAC - Math.abs(this.scope.DEX)) - 2;
-			this.scope.skill.acrobaticsMM -= 4; 
-			this.scope.skill.climbMM -= 4; 
-			this.scope.skill.disableDeviceMM -= 4; 
-			this.scope.skill.escapeArtistMM -= 4; 
-			this.scope.skill.flyMM -= 4; 
-			this.scope.skill.rideMM -= 4; 
-			this.scope.skill.sleightOfHandMM -= 4; 
-			this.scope.skill.stealthMM -= 4; 
-			this.scope.skill.swimMM -= 4; 
-		}	else {
-			this.scope.tempAC = (this.scope.tempAC +  Math.abs(this.scope.DEX)) +  2;
-			this.scope.skill.acrobaticsMM += 4;	
-			this.scope.skill.climbMM += 4; 
-			this.scope.skill.disableDeviceMM += 4; 
-			this.scope.skill.escapeArtistMM += 4; 
-			this.scope.skill.flyMM += 4; 
-			this.scope.skill.rideMM += 4; 
-			this.scope.skill.sleightOfHandMM += 4; 
-			this.scope.skill.stealthMM += 4; 
-			this.scope.skill.swimMM += 4; 													
-		}													 	
+		let x;
+		let y; 
+		let z;
+		condition ? (x = Math.abs(this.scope.DEX), y = 2, z = 4) : (x = -Math.abs(this.scope.DEX), y = -2, z = -4);
+		this.scope.tempAC = (this.scope.tempAC - x) - y; 
+		this.scope.skill.acrobaticsMM -= z; 
+		this.scope.skill.climbMM -= z; 
+		this.scope.skill.disableDeviceMM -= z; 
+		this.scope.skill.escapeArtistMM -= z; 
+		this.scope.skill.flyMM -= z; 
+		this.scope.skill.rideMM -= z; 
+		this.scope.skill.sleightOfHandMM -= z; 
+		this.scope.skill.stealthMM -= z; 
+		this.scope.skill.swimMM -= z;													 	
 	}
 
 ////////COWERING/////////////		
 	if (name === "Cowering") {	
-		if (this.scope.tempAC === undefined) {
-				this.scope.tempAC = 0;
-			}
-		if (this.scope.tempAC === '') {
-			this.scope.tempAC = 0;
-		}
 		if (condition) {
 			this.scope.tempAC -= 2;
 			this.scope.mettle.speed = 0;
@@ -75,33 +54,15 @@ app.service("ConditionSrv", function() {
 
 ////////FATIGUED/////////////		
 	if (name === "Fatigued") {
-		// ensuring everything is a number
-		if (this.scope.tempDEX === undefined) {
-			this.scope.tempDEX = 0;
-		}
-		if (this.scope.tempSTR === undefined) {
-			this.scope.tempSTR = 0;
-		}
-		if (this.scope.tempDEX === '') {
-			this.scope.tempDEX = 0;
-		}
-		if (this.scope.tempSTR === '') {
-			this.scope.tempSTR = 0;
-		}
-		// if true add it, if false reverse it
-		if (condition === true) {
-			this.scope.tempDEX -= 2;
-			this.scope.tempSTR -= 2;
-		} else {
-				this.scope.tempDEX += 2;
-				this.scope.tempSTR += 2;
-			}	
+		let x;
+		condition ? x = 2 : x = -2;
+		this.scope.tempDEX -= x;
+		this.scope.tempSTR -= x;	
 		}
 
 ////////HELPLESS/////////////		
 	if (name === "Helpless") {
 		if (condition) {
-			console.log(this.scope.originalDEX);
 			this.scope.mettle.speed = 0;
 			this.scope.tempDEX =  0 - Math.abs(this.scope.tempDEX) - Math.abs(this.scope.originalDEX) - 5;
 		} else {
@@ -109,7 +70,56 @@ app.service("ConditionSrv", function() {
 				 this.scope.tempDEX = this.scope.tempDEX + Math.abs(this.scope.originalDEX) + 5;		
 			}	
 	}
-	
+
+////////PANICKED/////////////		
+	if (name === "Panicked") {
+		let x = condition ? 2 : -2;
+
+		this.scope.tempFortMod -= x;
+		this.scope.tempRefMod -= x;
+		this.scope.tempWillMod -= x;
+		for (let skill in this.scope.skill) {
+			if (/[a-z]*MM/i.test(skill)) {
+				this.scope.skill[skill] -= x;
+			}
+		}
+	}
+
+
+////////PARALYZED/////////////		
+	if (name === "Paralyzed") {
+				if (condition) {
+			this.scope.mettle.speed = 0;
+			this.scope.tempDEX =  0 - Math.abs(this.scope.tempDEX) - Math.abs(this.scope.originalDEX) - 5;
+		  this.scope.tempSTR =  0 - Math.abs(this.scope.tempSTR) - Math.abs(this.scope.originalSTR) - 5;
+		} else {
+				 this.scope.mettle.speed = this.scope.originalSpeed;
+				 this.scope.tempDEX = this.scope.tempDEX + Math.abs(this.scope.originalDEX) + 5;	
+				 this.scope.tempSTR = this.scope.tempSTR + Math.abs(this.scope.originalSTR) + 5;		
+			}	
+	}
+
+	////////PINNED/////////////		
+	if (name === "Pinned") {
+		if (condition) {
+		this.scope.mettle.speed = 0;
+		this.scope.tempAC -= 4;
+		this.scope.tempDEX -= Math.abs(this.scope.originalDEX);
+		} else {
+			this.scope.mettle.speed = this.scope.originalSpeed;
+			this.scope.tempAC += 4;
+			this.scope.tempDEX += Math.abs(this.scope.originalDEX);
+		}
+  }
+
+	//////// STUNNED/////////////		
+	if (name === "Stunned") {	
+		let x;
+		let y; 
+		condition ? (x = Math.abs(this.scope.DEX), y = 2) : (x = -Math.abs(this.scope.DEX), y = -2);
+		this.scope.tempAC = (this.scope.tempAC - x) - y;  
+	}
+
 
 
 
