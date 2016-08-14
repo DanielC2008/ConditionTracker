@@ -93,6 +93,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		$scope.tempCMB = "";
 		$scope.tempCMD = "";
 		$scope.tempAC = "";
+		$scope.tempAB = "";
 		$scope.originalSpeed = $scope.mettle.speed;
 		$scope.mettle.dodgeBonus = $scope.mettle.dodge ? 1 : 0;
 		$location.url("#/tracker/hero");
@@ -211,8 +212,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt($scope.mettle.MMFort) +
 						parseInt($scope.CON) +
 						parseInt(fortMod);
-
-
 	};
 
 	$scope.getRef = function() {
@@ -240,7 +239,32 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt(willMod);
 	};
 
-// COMBAT MANUEVERS//////////////////////
+// COMBAT//////////////////////
+	
+	$scope.strAB = function() {
+		let temp = $scope.tempAB;
+		if (temp === ""){
+			temp = 0;
+		}
+		return  parseInt($scope.mettle.baseAttackBonus) +
+						parseInt($scope.STR) +
+						parseInt($scope.mettle.sizeMod) +
+						parseInt(temp);
+	};
+
+
+	$scope.dexAB = function() {
+		let temp = $scope.tempAB;
+		if (temp === ""){
+			temp = 0;
+		}
+		return  parseInt($scope.mettle.baseAttackBonus) +
+						parseInt($scope.DEX) +
+						parseInt($scope.mettle.sizeMod) +
+						parseInt(temp);
+	};
+
+
 	$scope.getCMB = function() {
 		let CMBMod = $scope.tempCMB;
 		if (CMBMod === ""){
