@@ -34,6 +34,7 @@
 				<div class="col s12" ng-if="mettle">Touch AC: {{touchAC()}}	</div>
 				<div class="col s12" ng-if="mettle">Flat Footed: {{flatFooted()}}</div>
 				<div class="col s12">BAB: {{mettle.baseAttackBonus}}</div>
+				<div class="col s12">Hit Dice: {{mettle.hitDice}}</div>
 				<div class="col s12">Spell Resistance: {{mettle.spellResistance}}</div>
 				<div class="col s8" ng-if="mettle">CMB:	{{getCMB()}}</div>
 				<input class="col s4" ng-model="tempCMB">
@@ -65,14 +66,14 @@
 			<div class="col s2">Weight: {{hero.weight}}</div>
 			<div class="col s2">Hair: {{hero.hair}}</div>
 			<div class="col s4">
-				<div class="col s12">Initiative: {{add(DEX, mettle.MMinitiation)}}</div>
+				<div class="col s12">Initiative: {{initiative(DEX, mettle.MMinitiation)}}</div>
 				<div class="col s12" >Dex: {{DEX}}</div>
 				<div class="col s12">Init Modifiers: {{mettle.MMinitiation}}</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col s3">
-				<div class="col s12">Current HP: {{mettle.currHealth}}</div>
+				<div class="col s12" ng-if="mettle">Current HP: {{mettle.currHealth}}</div>
 				<input class="col s12" placeholder="Damage..." ng-model="healthChange" ng-keyup="$event.keyCode == 13 && applyChange(healthChange)"/>
 				<div class="col s12">Total HP: {{mettle.healthPoints}}</div>
 				<div class="col s12">DR: {{mettle.damageReduction}}</div>
@@ -137,7 +138,7 @@
 			<div class="col s3">CON</div>
 			<div class="col s3">{{abilities.CON}}</div>
 			<div class="col s3" ng-if="abilities">{{getMod('CON', abilities.CON, tempCON)}}</div>
-			<input class="col s3" ng-model="tempCON">
+			<input class="col s3" ng-model="tempCON" ng-change="conChange()">
 		</div>
 		<div class="row">
 			<div class="col s3">DEX</div>
@@ -243,7 +244,7 @@
 			<div class="col s2">{{skill.craft1TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{skill.craftType2}}</div>
+			<div class="col s2">Craft: {{skill.craft2Type}}</div>
 			<div class="col s2">{{skill.craft2 ? skillTotal(INT, skill.craft2TypeRanks, skill.craft2TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>
@@ -251,7 +252,7 @@
 			<div class="col s2">{{skill.craft2TypeMM}}</div>
 		</div>
 		<div class="row">
-			<div class="col s2">Craft: {{skill.craftType3}}</div>
+			<div class="col s2">Craft: {{skill.craft3Type}}</div>
 			<div class="col s2">{{skill.craft3 ? skillTotal(INT, skill.craft3TypeRanks, skill.craft3TypeMM) : ""}}</div>
 			<div class="col s2">=INT</div>
 			<div class="col s2">{{INT}}</div>

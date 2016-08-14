@@ -6,6 +6,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	$scope.originalSpeed = null;
 	$scope.originalDEX = null;
 	$scope.originalSTR = null;
+	$scope.originalConChange = "";
 //////////////CONDITIONS///////////////////
 	$scope.inflictedConditions = [];
 	// only show conditions if charcter clicked
@@ -102,13 +103,12 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		$scope.skill = currSkill;
 	})
 
-
 	$scope.getMod = function(which, abl, temp) {
 		if (temp === "") {
 			temp = 0;
 		};
 		if (temp === "-") {
-			temp = 0;
+			return;
 		};
 		if (which === "CHA") {
 			$scope.CHA   = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
@@ -138,12 +138,27 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		}
 	};
 
-	$scope.add = function(a, b) {
+	$scope.initiative = function(a, b) {
 		return parseInt(a) + parseInt(b);
 	};
+//HEALTH//////////////////////
+	$scope.conChange = function() {
+		let temp = $scope.tempCON === "" ? $scope.originalConChange : $scope.tempCON;
+		if (temp === "-") {
+			return;
+		} 
+		let alter = temp * $scope.mettle.hitDice;
+		$scope.mettle.currHealth = parseInt($scope.mettle.currHealth) + parseInt(alter);
+		$scope.originalConChange = -temp;
+	}
+
 
 	$scope.applyChange = function(change) {
-		$scope.mettle.currHealth = parseInt($scope.mettle.currHealth) - parseInt(change); 
+		let damage = parseInt(change) - $scope.mettle.damageReduction;
+		$scope.mettle.currHealth =  parseInt($scope.mettle.currHealth) - damage; 
+		if ($scope.mettle.currHealth > $scope.mettle.healthPoints) {
+			$scope.mettle.currHealth = $scope.mettle.healthPoints;
+		}
 		$scope.healthChange = null;
 	};
 
