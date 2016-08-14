@@ -14,8 +14,12 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 	$scope.addNewHero = function() {
 		$scope.newHero.uid = AuthFactory.getUser();
 		HeroFactory.postNewHero($scope.newHero)
-		.then(function() {
-			$location.url("/tracker/newAbility");
+		.then(function(obj) {
+			console.log(obj.name);
+			HeroFactory.putLastHero(obj.name)
+			.then(function() {
+				$location.url("/tracker/newAbility");
+			});
 		});
 	};
 

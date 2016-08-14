@@ -1,7 +1,54 @@
 "use strict";
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
-	let key = HeroFactory.getHeroKey();
+	HeroFactory.getLastHero()
+	.then(function(){
+		let key = HeroFactory.getHeroKey();
+	///////FIREBASE CALLS///////////////
+		HeroFactory.getHero(key)
+		.then(function(currHero) {
+			HeroFactory.putLastHero(currHero.id);
+			$scope.hero = currHero;
+		});
+
+		HeroFactory.getAbility(key)
+		.then(function(currAbility){
+			$scope.abilities = currAbility;
+			$scope.tempCHA = "";
+			$scope.tempCON = "";
+			$scope.tempDEX = "";
+			$scope.tempINT = "";
+			$scope.tempSTR = "";
+			$scope.tempWIS = "";
+			$scope.CHA;
+			$scope.CON;
+			$scope.DEX;
+			$scope.INT;
+			$scope.STR;
+			$scope.WIS;
+		});
+		
+		HeroFactory.getMettle(key)
+		.then(function(currMettle) {
+			$scope.mettle = currMettle;
+			$scope.mettle.currHealth = $scope.mettle.healthPoints;
+			$scope.tempFortMod = "";
+			$scope.tempRefMod = "";
+			$scope.tempWillMod = "";
+			$scope.tempCMB = "";
+			$scope.tempCMD = "";
+			$scope.tempAC = "";
+			$scope.tempAB = "";
+			$scope.originalSpeed = $scope.mettle.speed;
+			$scope.mettle.dodgeBonus = $scope.mettle.dodge ? 1 : 0;
+			$location.url("#/tracker/hero");
+		});
+
+		HeroFactory.getSkill(key)
+		.then(function(currSkill) {
+			$scope.skill = currSkill;
+		});
+	})
 	// reset for conditions
 	$scope.originalSpeed = null;
 	$scope.originalDEX = null;
@@ -60,49 +107,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 	}
 
 
-///////FIREBASE CALLS///////////////
-	HeroFactory.getHero(key)
-	.then(function(currHero) {
-		$scope.hero = currHero;
-	})
-
-	HeroFactory.getAbility(key)
-	.then(function(currAbility){
-		$scope.abilities = currAbility;
-		$scope.tempCHA = "";
-		$scope.tempCON = "";
-		$scope.tempDEX = "";
-		$scope.tempINT = "";
-		$scope.tempSTR = "";
-		$scope.tempWIS = "";
-		$scope.CHA;
-		$scope.CON;
-		$scope.DEX;
-		$scope.INT;
-		$scope.STR;
-		$scope.WIS;
-	})
-	
-	HeroFactory.getMettle(key)
-	.then(function(currMettle) {
-		$scope.mettle = currMettle;
-		$scope.mettle.currHealth = $scope.mettle.healthPoints;
-		$scope.tempFortMod = "";
-		$scope.tempRefMod = "";
-		$scope.tempWillMod = "";
-		$scope.tempCMB = "";
-		$scope.tempCMD = "";
-		$scope.tempAC = "";
-		$scope.tempAB = "";
-		$scope.originalSpeed = $scope.mettle.speed;
-		$scope.mettle.dodgeBonus = $scope.mettle.dodge ? 1 : 0;
-		$location.url("#/tracker/hero");
-	})
-
-	HeroFactory.getSkill(key)
-	.then(function(currSkill) {
-		$scope.skill = currSkill;
-	})
 
 	$scope.getMod = function(which, abl, temp) {
 		if (temp === "") {

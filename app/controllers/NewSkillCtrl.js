@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $location) {
+app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $window, $location) {
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
 	if (editKey) {
@@ -22,6 +22,7 @@ app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $locat
 		HeroFactory.postNewSkill($scope.newSkill)
 		.then(function() {
 			$location.url("/tracker/hero");
+			$window.location.reload();
 		});
 	};
 

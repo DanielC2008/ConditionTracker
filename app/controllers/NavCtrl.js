@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, $route) {
+app.controller("NavCtrl", function($scope, AuthFactory, $location, $window, HeroFactory) {
 
 		HeroFactory.dropDown()
 		.then(function(heros) {
@@ -8,8 +8,10 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, 
 		});
 
 		$scope.getHero = function(id) {
-			HeroFactory.setHeroKey(id);
+			HeroFactory.putLastHero(id)
+			.then(function() {
 			$location.url("/tracker/hero");
+			});
 		};
 
 		$scope.logout = function() {
@@ -28,7 +30,7 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, 
 
 		$scope.addHero = function() {
 			HeroFactory.removeEditKey();
-				$location.url("/tracker/newHero");
+			$location.url("/tracker/newHero");
 		}
 
 
@@ -37,29 +39,34 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, HeroFactory, 
 			let	mettleId;
 			let skillId;
 			console.log("needs delete message");
+			console.log(id);
 			HeroFactory.deleteHero(id)
 			.then(function() {
-			});
-			HeroFactory.getAbility(id)
-			.then(function(ablId){
-				abilityId = ablId.id;
-				HeroFactory.deleteAbility(abilityId)
-				.then(function() {
+				HeroFactory.getAbility(id)
+				.then(function(ablId){
+					console.log(ablId);
+					abilityId = ablId.id;
+					HeroFactory.deleteAbility(abilityId)
+					.then(function() {
+						HeroFactory.getMettle(id)
+						.then(function(metId){
+							console.log(metId);
+							mettleId = metId.id;
+							HeroFactory.deleteMettle(mettleId)
+							.then(function() {
+								HeroFactory.getSkill(id)
+								.then(function(sklId){
+							    console.log(sklId);
+									skillId = sklId.id;
+									HeroFactory.deleteSkill(skillId)
+									.then(function() {
+									});
+								});
+							});
+						});
+					});
 				});
-			});
-			HeroFactory.getMettle(id)
-			.then(function(metId){
-				mettleId = metId.id;
-				HeroFactory.deleteMettle(mettleId)
-				.then(function() {
-				});
-			});
-			HeroFactory.getSkill(id)
-			.then(function(sklId){
-				skillId = sklId.id;
-				HeroFactory.deleteSkill(skillId)
-				.then(function() {
-				});
+				$window.location.reload();
 			});
 		};
 
