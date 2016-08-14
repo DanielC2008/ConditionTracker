@@ -154,7 +154,8 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 
 	$scope.applyChange = function(change) {
-		$scope.mettle.currHealth =  parseInt($scope.mettle.currHealth) - parseInt(change); 
+		let damage = parseInt(change) - $scope.mettle.damageReduction;
+		$scope.mettle.currHealth =  parseInt($scope.mettle.currHealth) - damage; 
 		if ($scope.mettle.currHealth > $scope.mettle.healthPoints) {
 			$scope.mettle.currHealth = $scope.mettle.healthPoints;
 		}
