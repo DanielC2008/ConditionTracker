@@ -1,16 +1,38 @@
 "use strict";
 
-app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
+app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	let heroKey = [];
 	let editKey = [];
+
+	////////////// GETTER/SETTER////////////
+	const getHeroKey = function() {
+		return heroKey[0];
+	};
+
+	const setHeroKey = function(id) {
+		heroKey.splice(0, 1, id);
+	};
+
+	const getEditKey = function() {
+		return editKey[0];
+	};
+
+	const setEditKey = function(id) {
+		editKey.splice(0, 1, id);
+	};
+
+	const removeEditKey = function() {
+		editKey.splice(0, 1);	
+
+	}
+	
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/heros.json`, 
 			JSON.stringify(newHero))
 			.success(function(obj) {
-				heroKey.splice(0,1,obj.name);
-				resolve();
+				resolve(obj);
 			})
 			.error(function(error) {
 				reject(error);
@@ -19,7 +41,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewAbility = function(newAbility) {
-		newAbility.heroKey = heroKey[0];
+		newAbility.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/abilities.json`, 
 			JSON.stringify(newAbility))
@@ -33,7 +55,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewMettle = function(newMettle) {
-		newMettle.heroKey = heroKey[0];
+		newMettle.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/mettle.json`, 
 			JSON.stringify(newMettle))
@@ -47,7 +69,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewSkill = function(newSkill) {
-		newSkill.heroKey = heroKey[0];
+		newSkill.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/skill.json`, 
 			JSON.stringify(newSkill))
@@ -62,11 +84,27 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 
 ////////////// GET////////////
+	const getLastHero = function() {
+		let uid = AuthFactory.getUser();
+		return $q(function(resolve, reject) {
+			$http.get(`${FirebaseURL}/lastHero/${uid}.json`)
+			.success(function(obj) {
+				if (obj !== null) {
+				  heroKey.splice(0, 1, obj.id);
+			  }
+				resolve(obj);
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
 
 	const dropDown = function() {
+		let uid = AuthFactory.getUser();
 		let heroNames = [];
 		return $q(function(resolve, reject) {
-			$http.get(`${FirebaseURL}/heros.json`)
+			$http.get(`${FirebaseURL}/heros.json?orderBy="uid"&equalTo="${uid}"`)
 			.success(function(heros) {
 				Object.keys(heros).forEach(function(key){
 					heros[key].id=key;
@@ -142,35 +180,13 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 		});
 	};
 
-	////////////// GETTER/SETTER////////////
-	const getHeroKey = function() {
-		return heroKey[0];
-	};
-
-	const setHeroKey = function(id) {
-		heroKey.splice(0, 1, id);
-	};
-
-	const getEditKey = function() {
-		return editKey[0];
-	};
-
-	const setEditKey = function(id) {
-		editKey.splice(0, 1, id);
-	};
-
-	const removeEditKey = function() {
-		editKey.splice(0, 1);	
-
-	}
-
 	////////////// DELETE////////////
 
 		const deleteHero = function(id) {
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/heros/${id}.json`)
 			.success(function() {
-					resolve();
+				resolve();
 			})
 			.error(function(error) {
 				reject(error);
@@ -207,6 +223,24 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			$http.delete(`${FirebaseURL}/skill/${id}.json`)
 			.success(function() {
 					resolve();
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
+	////////////// PUT////////////
+	const putLastHero = function(id) {
+		let uid = AuthFactory.getUser();
+		let newObj = {};
+		newObj[`${uid}`] = {"id": `${id}`}
+		return $q(function(resolve,reject) {
+			$http.put(`${FirebaseURL}/lastHero.json`,
+				newObj)
+			.success(function(obj) {
+				heroKey.splice(0, 1, obj[Object.keys(obj)[0]]);
+				resolve();
 			})
 			.error(function(error) {
 				reject(error);
@@ -271,5 +305,5 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 
 
-	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero, putAbility, putMettle, putSkill, removeEditKey};
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero, putAbility, putMettle, putSkill, putLastHero, getLastHero, removeEditKey};
 });

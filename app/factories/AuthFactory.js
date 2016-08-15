@@ -1,6 +1,6 @@
 "use strict";
 	
-app.factory("AuthFactory", function() {
+app.factory("AuthFactory", function($window) {
 
 	let currentUserId = null;
 	let provider = new firebase.auth.GoogleAuthProvider();
@@ -8,6 +8,7 @@ app.factory("AuthFactory", function() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if(user) {
+			$window.localStorage.setItem('user', JSON.stringify(user.uid));
 			currentUserId = user.uid;
 			console.log("LoggedIn", currentUserId);
 		} 
@@ -22,17 +23,25 @@ app.factory("AuthFactory", function() {
 	};
 
 	const getUser = function() {
-		return currentUserId;
+	  let storageUser = $window.localStorage.getItem('user');
+		if (currentUserId) {
+      return currentUserId;
+	  }
+	  else {
+	      let user = JSON.parse(storageUser);
+	      return user;
+	    } 
 	};
 
 	const logout = function(){
 		firebase.auth().signOut().then(function(){
+			$window.localStorage.removeItem('user');
 			currentUserId = null;
 			console.log("logged out");
 		}, function(error){
 		});
 	};
-	
+
 	return {authWithProvider, isAuthenticated, getUser, logout};
 
 });

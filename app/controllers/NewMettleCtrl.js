@@ -4,7 +4,7 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
 	if (editKey) {
-		HeroFactory.getMettle(editKey)
+		HeroFactory.getMettle(editKey.id)
 		.then(function(obj) {
 			$scope.newMettle = obj;
 			$scope.edit = true;
