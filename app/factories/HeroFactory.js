@@ -101,9 +101,10 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	};
 
 	const dropDown = function() {
+		let uid = AuthFactory.getUser();
 		let heroNames = [];
 		return $q(function(resolve, reject) {
-			$http.get(`${FirebaseURL}/heros.json`)
+			$http.get(`${FirebaseURL}/heros.json?orderBy="uid"&equalTo="${uid}"`)
 			.success(function(heros) {
 				Object.keys(heros).forEach(function(key){
 					heros[key].id=key;
@@ -182,7 +183,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	////////////// DELETE////////////
 
 		const deleteHero = function(id) {
-			console.log(id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/heros/${id}.json`)
 			.success(function() {
