@@ -10,6 +10,7 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, $window, Hero
 		$scope.getHero = function(id) {
 			HeroFactory.putLastHero(id)
 			.then(function() {
+			$window.location.reload();	
 			$location.url("/tracker/hero");
 			});
 		};
@@ -39,7 +40,6 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, $window, Hero
 			let	mettleId;
 			let skillId;
 			console.log("needs delete message");
-			console.log(id);
 			HeroFactory.deleteHero(id)
 			.then(function() {
 				HeroFactory.getAbility(id)

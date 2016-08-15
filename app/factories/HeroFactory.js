@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
+app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	let heroKey = [];
 	let editKey = [];
 
@@ -41,7 +41,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewAbility = function(newAbility) {
-		newAbility.heroKey = heroKey[0];
+		newAbility.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/abilities.json`, 
 			JSON.stringify(newAbility))
@@ -55,7 +55,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewMettle = function(newMettle) {
-		newMettle.heroKey = heroKey[0];
+		newMettle.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/mettle.json`, 
 			JSON.stringify(newMettle))
@@ -69,7 +69,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 	};
 
 	const postNewSkill = function(newSkill) {
-		newSkill.heroKey = heroKey[0];
+		newSkill.heroKey = heroKey[0].id;
 		return $q(function(resolve, reject) {
 			$http.post(`${FirebaseURL}/skill.json`, 
 			JSON.stringify(newSkill))
@@ -85,12 +85,14 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 ////////////// GET////////////
 	const getLastHero = function() {
+		let uid = AuthFactory.getUser();
 		return $q(function(resolve, reject) {
-			$http.get(`${FirebaseURL}/lastHero/id.json`)
-			.success(function(id) {
-				heroKey.splice(0, 1, id);
-				console.log(heroKey);
-				resolve();
+			$http.get(`${FirebaseURL}/lastHero/${uid}.json`)
+			.success(function(obj) {
+				if (obj !== null) {
+				  heroKey.splice(0, 1, obj.id);
+			  }
+				resolve(obj);
 			})
 			.error(function(error) {
 				reject(error);
@@ -176,7 +178,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 			});
 		});
 	};
-
+	
 	////////////// DELETE////////////
 
 		const deleteHero = function(id) {
@@ -229,12 +231,14 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http) {
 
 	////////////// PUT////////////
 	const putLastHero = function(id) {
+		let uid = AuthFactory.getUser();
+		let newObj = {};
+		newObj[`${uid}`] = {"id": `${id}`}
 		return $q(function(resolve,reject) {
 			$http.put(`${FirebaseURL}/lastHero.json`,
-				{"id": `${id}`})
+				newObj)
 			.success(function(obj) {
-				heroKey.splice(0, 1, obj.id);
-				console.log(heroKey);
+				heroKey.splice(0, 1, obj[Object.keys(obj)[0]]);
 				resolve();
 			})
 			.error(function(error) {

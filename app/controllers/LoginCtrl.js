@@ -6,8 +6,8 @@ app.controller("LoginCtrl", function($scope, AuthFactory, HeroFactory, $location
 		AuthFactory.authWithProvider()
 		.then(function() {
 			HeroFactory.getLastHero()
-			.then(function(obj) {
-				obj === null ? $location.url("/tracker/newHero") : $location.url("/tracker/hero"); 
+			.then(function(id) {
+ 				id === null ? $location.url("/tracker/newHero") : $location.url("/tracker/hero"); 
 			})
 		});
 	};
