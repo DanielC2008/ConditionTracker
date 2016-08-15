@@ -1,6 +1,21 @@
 "use strict";
 
 app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFactory, ConditionSrv) {
+//////////////VARIABLES///////////////////
+		// reset for conditions
+	$scope.originalSpeed = null;
+	$scope.originalDEX = null;
+	$scope.originalSTR = null;
+	$scope.originalConChange = "";
+	// only show conditions if charcter clicked
+	$scope.inflictedConditions = [];
+	// establishing text for bottom modal
+	$scope.text = null;
+	// initializing modals
+	$('.modal-trigger').leanModal();
+	$(".button-collapse").sideNav();
+	
+
 	HeroFactory.getLastHero()
 	.then(function(){
 		let key = HeroFactory.getHeroKey();
@@ -49,30 +64,9 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 			$scope.skill = currSkill;
 		});
 	})
-	// reset for conditions
-	$scope.originalSpeed = null;
-	$scope.originalDEX = null;
-	$scope.originalSTR = null;
-	$scope.originalConChange = "";
 //////////////CONDITIONS///////////////////
-	$scope.inflictedConditions = [];
-	// only show conditions if charcter clicked
-	$scope.conditionList = false;
-	// initializing modals
-	$('.modal-trigger').leanModal();
-	$(".button-collapse").sideNav();
-	// establishing text for bottom modal
-	$scope.text = null;
-
-
-	$scope.addOnClick = function(event) {
-		if (event.offsetX === 0) {
-		$scope.conditionsList = true;
-		}
-	}
 	ConditionFactory.getConditions()
 	.then(function(conditionArr) {
-
 		$scope.conditions = conditionArr;
 	});
 
@@ -106,7 +100,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
 	}
 
-
+//////////////ABILITY MODIFIERS///////////////////
 
 	$scope.getMod = function(which, abl, temp) {
 		if (temp === "") {
@@ -142,11 +136,11 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 			return $scope.WIS;
 		}
 	};
-
+//////////////INITIATIVE///////////////////
 	$scope.initiative = function(a, b) {
 		return parseInt(a) + parseInt(b);
 	};
-//HEALTH//////////////////////
+///////////////////HEALTH//////////////////
 	$scope.conChange = function() {
 		let temp = $scope.tempCON === "" ? $scope.originalConChange : $scope.tempCON;
 		if (temp === "-") {
@@ -167,7 +161,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		$scope.healthChange = null;
 	};
 
-// ARMOR CLASS//////////////////////
+//////////////// ARMOR CLASS//////////////////////
 	$scope.getAC = function() {
 		let tempAC = $scope.tempAC;
 		if (tempAC === "") {
@@ -205,7 +199,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 	};
 
-// SAVING THROWS//////////////////////
+/////////////// SAVING THROWS//////////////////////
 	$scope.getFort = function() {
 		let fortMod = $scope.tempFortMod;
 		if (fortMod === ""){
@@ -243,7 +237,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt(willMod);
 	};
 
-// COMBAT//////////////////////
+//////////////////// COMBAT//////////////////////
 	
 	$scope.strAB = function() {
 		let temp = $scope.tempAB;
@@ -293,7 +287,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt(CMDMod);
 	};
 
-// SKILL//////////////////////	
+///////////////// SKILL//////////////////////	
 	$scope.skillTotal = function(a, b, c) {
 		return parseInt(a) + parseInt(b) + parseInt(c);
 	}

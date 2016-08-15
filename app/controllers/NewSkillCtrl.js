@@ -11,7 +11,6 @@ app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $windo
 		})
 	}
 
-
 	$scope.addNewSkill = function() {
 		for (let item in $scope.newSkill) {
 			if ($scope.newSkill[item] === null) {

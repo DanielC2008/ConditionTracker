@@ -4,7 +4,6 @@ app.service("ConditionSrv", function() {
 	
 	function ConditionSrv(scope, name, condition) {
 		this.scope = scope;
-		console.log(name);
 ////////BLINDED/////////////		
 	if (name === "Blinded") {
 		let x;
@@ -135,7 +134,6 @@ app.service("ConditionSrv", function() {
 ////////PANICKED/////////////		
 	if (name === "Panicked") {
 		let x = condition ? 2 : -2;
-		console.log(this.scope.tempCMD);
 		this.scope.tempCHA -= x;
 		this.scope.tempCON -= x;
 		this.scope.tempDEX -= x;
@@ -196,9 +194,6 @@ app.service("ConditionSrv", function() {
 
 
 
-
-	
-// dont touch 
 	}	
 	return ConditionSrv;
 });

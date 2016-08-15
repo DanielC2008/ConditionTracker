@@ -10,7 +10,6 @@ app.factory("AuthFactory", function($window) {
 		if(user) {
 			$window.localStorage.setItem('user', JSON.stringify(user.uid));
 			currentUserId = user.uid;
-			console.log("LoggedIn", currentUserId);
 		} 
 	});
 
@@ -37,7 +36,6 @@ app.factory("AuthFactory", function($window) {
 		firebase.auth().signOut().then(function(){
 			$window.localStorage.removeItem('user');
 			currentUserId = null;
-			console.log("logged out");
 		}, function(error){
 		});
 	};
