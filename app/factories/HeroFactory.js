@@ -3,7 +3,6 @@
 app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	let heroKey = [];
 	let editKey = [];
-
 	////////////// GETTER/SETTER////////////
 	const getHeroKey = function() {
 		return heroKey[0];
@@ -84,6 +83,18 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 
 
 ////////////// GET////////////
+	const loginLastHero = function(uid) {
+		return $q(function(resolve, reject) {
+			$http.get(`${FirebaseURL}/heros.json?orderBy="uid"&equalTo="${uid}"`)
+			.success(function(obj) {
+				resolve(obj);
+			})
+			.error(function(error) {
+				reject(error);
+			});
+		});
+	};
+
 	const getLastHero = function() {
 		let uid = AuthFactory.getUser();
 		return $q(function(resolve, reject) {
@@ -303,7 +314,5 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 
 
 
-
-
-	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero, putAbility, putMettle, putSkill, putLastHero, getLastHero, removeEditKey};
+	return {postNewHero, postNewAbility, postNewMettle, postNewSkill, getHero, getHeroKey, getAbility, getMettle, getSkill, dropDown, setHeroKey, deleteHero, deleteAbility, deleteMettle, deleteSkill, setEditKey, getEditKey, putHero, putAbility, putMettle, putSkill, putLastHero, getLastHero, removeEditKey, loginLastHero};
 });
