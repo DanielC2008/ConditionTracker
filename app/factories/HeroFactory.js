@@ -178,14 +178,15 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 			});
 		});
 	};
-	
+
 	////////////// DELETE////////////
 
 		const deleteHero = function(id) {
+			console.log(id);
 		return $q(function(resolve, reject) {
 			$http.delete(`${FirebaseURL}/heros/${id}.json`)
 			.success(function() {
-					resolve();
+				resolve();
 			})
 			.error(function(error) {
 				reject(error);
