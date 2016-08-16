@@ -83,9 +83,11 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 
 ////////////// GET////////////
 	const loginLastHero = function(uid) {
+		console.log(uid);
 		return $q(function(resolve, reject) {
 			$http.get(`${FirebaseURL}/heros.json?orderBy="uid"&equalTo="${uid}"`)
 			.success(function(obj) {
+				console.log(obj);
 				resolve(obj);
 			})
 			.error(function(error) {
