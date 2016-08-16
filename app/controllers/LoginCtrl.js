@@ -8,7 +8,7 @@ app.controller("LoginCtrl", function($scope, AuthFactory, HeroFactory, $location
 			HeroFactory.loginLastHero(user.user.uid)
 			.then(function(id) {
  				id === "" ? $location.url("/tracker/newHero") : $location.url("/tracker/hero"); 
-			})
+			});
 		});
 	};
 

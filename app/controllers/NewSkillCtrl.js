@@ -8,7 +8,7 @@ app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $windo
 		.then(function(obj) {
 			$scope.newSkill = obj;
 			$scope.edit = true;
-		})
+		});
 	}
 
 	$scope.addNewSkill = function() {

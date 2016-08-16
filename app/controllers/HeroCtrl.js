@@ -63,7 +63,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		.then(function(currSkill) {
 			$scope.skill = currSkill;
 		});
-	})
+	});
 //////////////CONDITIONS///////////////////
 	ConditionFactory.getConditions()
 	.then(function(conditionArr) {
@@ -72,43 +72,43 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 
 // set inflicted conditions array
 	$scope.setCondition = function(text, name) {
-		let newObj = new Object();
-			newObj.name = `${name}`
+		let newObj = {};
+			newObj.name = `${name}`;
 			newObj.text = `${text}`;
 
 		$scope.inflictedConditions.push(newObj);
 		$('.button-collapse').sideNav('hide');
-	}
+	};
 	// set text for bottom modal
 	$scope.setText = function(text) {
 		$scope.text = text;
 		$('#modal1').openModal();
-	}
+	};
 	// remove specific condition
 	$scope.removeCon = function(name) {
 		let condition = false;
 		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
 		$scope.inflictedConditions.forEach(function(curr, index) {
 			if (curr.name === name) {
-				$scope.inflictedConditions.splice(index, 1)
+				$scope.inflictedConditions.splice(index, 1);
 			}
-		})
-	}
+		});
+	};
 	// inflict condition
 	$scope.inflict = function(name) {
 		let condition = true;
 		$scope.ConditionSrv = new ConditionSrv($scope, name, condition);
-	}
+	};
 
 //////////////ABILITY MODIFIERS///////////////////
 
 	$scope.getMod = function(which, abl, temp) {
 		if (temp === "") {
 			temp = 0;
-		};
+		}
 		if (temp === "-") {
 			return;
-		};
+		}
 		if (which === "CHA") {
 			$scope.CHA   = (Math.floor(parseInt(abl)/2) -5) + parseInt(temp);
 			return $scope.CHA;
@@ -149,7 +149,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 		let alter = temp * $scope.mettle.hitDice;
 		$scope.mettle.currHealth = parseInt($scope.mettle.currHealth) + parseInt(alter);
 		$scope.originalConChange = -temp;
-	}
+	};
 
 
 	$scope.applyChange = function(change) {
@@ -186,7 +186,7 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 						parseInt($scope.mettle.sizeMod) +
 						parseInt($scope.mettle.naturalArmor) +
 						parseInt($scope.mettle.deflectionMod) +
-						parseInt($scope.mettle.MMArmor)
+						parseInt($scope.mettle.MMArmor);
 	};
 
 		$scope.touchAC = function() {
@@ -290,6 +290,6 @@ app.controller("HeroCtrl", function($scope, $location, HeroFactory, ConditionFac
 ///////////////// SKILL//////////////////////	
 	$scope.skillTotal = function(a, b, c) {
 		return parseInt(a) + parseInt(b) + parseInt(c);
-	}
+	};
 
 });

@@ -8,7 +8,7 @@ app.controller("NewMettleCtrl", function($scope, AuthFactory, HeroFactory, $loca
 		.then(function(obj) {
 			$scope.newMettle = obj;
 			$scope.edit = true;
-		})
+		});
 	}
 
 

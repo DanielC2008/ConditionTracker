@@ -27,12 +27,12 @@ app.controller("NavCtrl", function($scope, AuthFactory, $location, $window, Hero
 			if (editKey) {
 				$location.url("/tracker/newHero");
 			}	
-		}
+		};
 
 		$scope.addHero = function() {
 			HeroFactory.removeEditKey();
 			$location.url("/tracker/newHero");
-		}
+		};
 
 
 		$scope.deleteHero = function(id) {
