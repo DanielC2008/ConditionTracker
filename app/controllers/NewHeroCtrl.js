@@ -45,5 +45,6 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 		weight : "",
 		hair : "",
 		eyes : "",
+		imgURL: ""
 	};
 });
