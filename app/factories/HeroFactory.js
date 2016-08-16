@@ -22,8 +22,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 
 	const removeEditKey = function() {
 		editKey.splice(0, 1);	
-
-	}
+	};
 	
 ////////////// POST////////////
 	const postNewHero = function(newHero) {
@@ -151,7 +150,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 					heroAbl[obj].id = obj;
 					let abilities = heroAbl[obj];
 					resolve(abilities);
-				};
+				}
 			})
 			.error(function(error) {
 				reject(error);
@@ -245,7 +244,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 	const putLastHero = function(id) {
 		let uid = AuthFactory.getUser();
 		let newObj = {};
-		newObj[`${uid}`] = {"id": `${id}`}
+		newObj[`${uid}`] = {"id": `${id}`};
 		return $q(function(resolve,reject) {
 			$http.put(`${FirebaseURL}/lastHero.json`,
 				newObj)

@@ -8,7 +8,7 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 		.then(function(obj) {
 			$scope.newAbility = obj;
 			$scope.edit = true;
-		})
+		});
 	}
 
 

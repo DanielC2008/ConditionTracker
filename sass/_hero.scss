@@ -1,0 +1,65 @@
+.container {
+	width: 93%;
+}
+
+.head {
+	border: 1px solid black;
+	background-color: black;
+	color: white;
+	padding: 0;
+}
+
+.stat-line {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+	background-color:  #f0f0f5;
+}
+
+.stat.col {
+	@extend .stat-line;
+  border: 1px solid black;
+}
+
+input.input {
+	height: 1.5rem;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+
+.head-soft {
+	background-color: #f0f0f5;
+	border-top: 1px solid black;
+	text-align: center;	
+}
+
+.hero.col {
+	font-size: 1.1rem;
+	padding-left: 0;
+	padding-right: 0;
+	height: 1.5rem;
+}
+
+.hero-stat.col {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;	
+	height: 1.5rem;
+	border-bottom: 1px solid black;
+}
+
+.no-margin {
+	margin-bottom: 0px !important;
+	padding: 0 0.75rem;
+}
+
+.less-margin {
+	padding: 0 0.75rem;
+	margin-bottom: 0.6rem !important;
+}
+
+.top {
+	margin-top: 1rem;
+}
