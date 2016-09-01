@@ -1,4 +1,5 @@
-# Condition Tracker
+# [Condition Tracker](https://condition-tracker.firebaseapp.com/#/login) Click here to check it out!
+
 
 ## This is a Character Sheet/Condition Tracker for Dungeon's and Dragons 4th edition Pathfinder. Click [here](http://www.rolroyce.com/descargas/PFRPGCS.pdf) for an example of what a physical character sheet might look like. You can add multiple characters including all their statistics, alter them, and delete them. At anytime you can alter any particular stat by changing the associated temp mod. You can also change the characters current condition by clicking the character's picture and selecting one of the conditions that are listed. Condition Tracker will alter any affected stats automatically and then restore your stats once you have chose to remove the condition. You can also read a full preview of the condition by choosing the button that is revealed under your characters picture.
 
