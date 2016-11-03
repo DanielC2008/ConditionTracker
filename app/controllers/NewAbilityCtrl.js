@@ -4,7 +4,7 @@ app.controller("NewAbilityCtrl", function($scope, AuthFactory, HeroFactory, $loc
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
 	if (editKey) {
-		HeroFactory.getAbility(editKey.id)
+		HeroFactory.getAbility(editKey)
 		.then(function(obj) {
 			$scope.newAbility = obj;
 			$scope.edit = true;

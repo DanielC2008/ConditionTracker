@@ -4,7 +4,7 @@ app.controller("NewSkillCtrl", function($scope, AuthFactory, HeroFactory, $windo
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
 	if (editKey) {
-		HeroFactory.getSkill(editKey.id)
+		HeroFactory.getSkill(editKey)
 		.then(function(obj) {
 			$scope.newSkill = obj;
 			$scope.edit = true;
