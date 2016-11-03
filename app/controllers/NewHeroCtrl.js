@@ -4,7 +4,7 @@ app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $locati
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
 	if (editKey) {
-		HeroFactory.getHero(editKey.id)
+		HeroFactory.getHero(editKey)
 		.then(function(obj) {
 			$scope.newHero = obj;
 			$scope.edit = true;

@@ -101,6 +101,7 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 			.success(function(obj) {
 				if (obj !== null) {
 				  heroKey.splice(0, 1, obj.id);
+
 			  }
 				resolve(obj);
 			})
@@ -246,7 +247,6 @@ app.factory("HeroFactory", function(FirebaseURL, $q, $http, AuthFactory) {
 		let newObj = {
 			"id": `${id}`
 		};
-		console.log('newObj', newObj)
 		return $q(function(resolve,reject) {
 			$http.put(`${FirebaseURL}/lastHero/${uid}.json`,
 				newObj)
