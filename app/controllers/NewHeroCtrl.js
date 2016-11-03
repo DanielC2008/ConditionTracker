@@ -3,7 +3,6 @@
 app.controller("NewHeroCtrl", function($scope, AuthFactory, HeroFactory, $location) {
 	$scope.edit = false;
 	let editKey = HeroFactory.getEditKey();
-	console.log('edit key in new hero', editKey);
 	if (editKey) {
 		HeroFactory.getHero(editKey)
 		.then(function(obj) {
